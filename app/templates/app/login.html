@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+</head>
+<body>
+    <h2>Đăng Nhập</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="username">Tên người dùng:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Đăng nhập</button>
+    </form>
+    <p>Chưa có tài khoản? <a href="{% url 'register' %}">Đăng ký tại đây</a></p>
+</body>
+</html>
