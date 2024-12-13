@@ -1,20 +1,53 @@
+<!-- login.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+        .messages {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .message.error {
+            font-weight: bold;
+        }
+
+        .register-link {
+            margin-top: 20px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h2>Đăng Nhập</h2>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="username">Tên người dùng:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Mật khẩu:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <button type="submit">Đăng nhập</button>
-    </form>
-    <p>Chưa có tài khoản? <a href="{% url 'register' %}">Đăng ký tại đây</a></p>
+  <!-- Hiển thị thông báo lỗi nếu có -->
+  {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="message error">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Form đăng nhập -->
+  <form method="POST">
+    {% csrf_token %}
+    <label for="username">Tên đăng nhập:</label>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Mật khẩu:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <button type="submit">Đăng nhập</button>
+  </form>
+
+  <!-- Thêm liên kết đăng ký nếu chưa có tài khoản -->
+  <a href="{% url 'register' %}" class="register-link">Chưa có tài khoản? Đăng ký tại đây</a>
 </body>
 </html>

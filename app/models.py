@@ -10,12 +10,13 @@ from django.dispatch import receiver
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
-    name = models.CharField(max_length=200, null=True)
-    email = models.EmailField(max_length=200, null=True)
+    first_name = models.CharField(max_length=100, null=True, blank=True)
+    last_name = models.CharField(max_length=100, null=True, blank=True)
+    phone = models.CharField(max_length=15, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.first_name} {self.last_name}"
 
 
 # Khởi tạo sản phầm có tên , giá , xác định loại sản phẩm
@@ -89,12 +90,4 @@ class ShippingAddress(models.Model):
         return self.address
 
 
-@receiver(post_save, sender=User)
-def create_customer(sender, instance, created, **kwargs):
-    if created:
-        Customer.objects.create(user=instance)
 
-
-@receiver(post_save, sender=User)
-def save_customer(sender, instance, **kwargs):
-    instance.customer.save()

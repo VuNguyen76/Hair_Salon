@@ -1,46 +1,20 @@
+<!-- register.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Ký</title>
+    <title>Đăng ký</title>
 </head>
 <body>
-    <h2>Đăng Ký</h2>
-
-    <!-- Hiển thị thông báo lỗi hoặc thành công -->
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    <!-- Form đăng ký -->
+    <h2>Đăng ký tài khoản</h2>
     <form method="POST">
         {% csrf_token %}
-        <label for="username">Tên người dùng:</label>
-        <input type="text" name="username" id="username" required><br>
 
-        <label for="first_name">Họ:</label>
-        <input type="text" name="first_name" id="first_name" required><br>
-
-        <label for="last_name">Tên:</label>
-        <input type="text" name="last_name" id="last_name" required><br>
-
-        <label for="address">Địa chỉ:</label>
-        <input type="text" name="address" id="address" required><br>
-
-        <label for="password">Mật khẩu:</label>
-        <input type="password" name="password" id="password" required><br>
-
-        <label for="confirm_password">Xác nhận mật khẩu:</label>
-        <input type="password" name="confirm_password" id="confirm_password" required><br>
+        <!-- Hiển thị tất cả các trường trong một form -->
+        {{ user_form.as_p }}
+        {{ customer_form.as_p }}
 
         <button type="submit">Đăng ký</button>
     </form>
-
-    <p>Đã có tài khoản? <a href="{% url 'login' %}">Đăng nhập tại đây</a></p>
 </body>
 </html>

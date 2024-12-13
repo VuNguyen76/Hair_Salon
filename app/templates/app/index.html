@@ -51,7 +51,12 @@
             <button class="btn_booking">ĐẶT LỊCH NGAY</button>
           </div>
           <div class="user">
-            <i class="fa-solid fa-user"></i>        
+            <i class="fa-solid fa-user"></i>
+              {% if user.is_authenticated %}
+            <span>{{ user.username }}</span>
+          {% else %}
+
+          {% endif %}
           </div>
           <div class="user-dashboard hidden">
             <ul class="user-menu">
@@ -64,12 +69,19 @@
               <li>
                 <a href="#"><i class="fa-solid fa-comments"></i>   Đóng góp ý kiến</a>
               </li>
-              <li>
-                <a href="#"><i class="fa-solid fa-right-to-bracket"></i>   Đăng nhập</a>
-              </li>
-              <li>
-                <a href="#"><i class="fa-solid fa-right-from-bracket"></i>   Đăng xuất</a>
-              </li>
+{#              <li>#}
+{#               <a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a>#}
+{#              </li>#}
+{#              <li>#}
+{#                <a href="#"><i class="fa-solid fa-right-from-bracket"></i>   Đăng xuất</a>#}
+{#              </li>#}
+                 <li>
+              {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+              {% else %}
+                <a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a>
+              {% endif %}
+            </li>
             </ul>
           </div>
       </div>
@@ -81,7 +93,7 @@
           <div class="banner">
               <div class="container">
                   <div class="row_banner">
-                      <div class="list_banner"> 
+                      <div class="list_banner">
                        <img class="banner_item" src="{% static 'app/images/banner/banner1.jpg' %}" alt="">
                        <img class="banner_item" src="{% static 'app/images/banner/banner2.png' %}" alt="">
                        <img class="banner_item" src="{% static 'app/images/banner/banner3.jpg' %}" alt="">
