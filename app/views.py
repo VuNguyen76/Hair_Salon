@@ -5,16 +5,13 @@ import json
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login as auth_login
-from django.contrib.auth.models import User
 from django.contrib import messages
 
 
 # Create your views here.
 def home(request):
-    products = Product.objects.all()
-    context = {'products':products}
-    return render(request, 'app/home.html',context)
+    context = {}
+    return render(request, 'app/index.html',context)
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -64,16 +61,20 @@ def updateItem(request):
 
     return JsonResponse({'success': True, 'message': 'Updated cart successfully'})
 # View đăng ký
+# View đăng ký
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()  # Lưu người dùng vào cơ sở dữ liệu
+            user = form.save()  # Lưu người dùng vào cơ sở dữ liệu
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Tài khoản của bạn đã được tạo thành công!')
+            messages.success(request, f'Tài khoản {username} đã được tạo thành công!')  # Thông báo thành công
             return redirect('login')  # Sau khi đăng ký xong, chuyển đến trang đăng nhập
+        else:
+            messages.error(request, 'Có lỗi khi tạo tài khoản. Vui lòng kiểm tra lại.')
     else:
-        form = UserCreationForm()
+        form = UserCreationForm()  # Tạo form trống
+
     return render(request, 'app/register.html', {'form': form})
 
 # View đăng nhập
@@ -93,3 +94,9 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')  # Sau khi đăng xuất, chuyển đến trang chủ
+def admin_view(request):
+    context ={}
+    return render(request, 'app/admin.html', context)
+def staff_view(request):
+    context ={}
+    return render(request,'app/staff.html',context)

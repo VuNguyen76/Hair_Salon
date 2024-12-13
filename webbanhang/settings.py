@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'webbanhang.urls'
@@ -127,3 +128,9 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/images')
+
+# settings.py
+LOGOUT_REDIRECT_URL = '/'  # Hoặc URL bạn muốn người dùng được chuyển hướng sau khi logout
+
+
+

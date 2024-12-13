@@ -4,11 +4,10 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('cart/', views.cart,name='cart'),
-    path('checkout/', views.checkout,name='checkout'),
-    path('update_item/', views.updateItem, name='update_item'),
 
+    path('admin_salon/', views.admin_view, name='admin_salon' ,),
+    path('staff_salon/', views.staff_view, name='staff_salon' ,),
     path('login/', views.login_view, name='login'),  # Đường dẫn đăng nhập
-    path('logout/', views.logout_view, name='logout'),  # Đường dẫn đăng xuất
-    path('register/', views.register_view, name='register'),  # Đường dẫn đăng ký
+    path('logout/', views.logout_view, name='logout'),
+    path('register/', views.register_view, name='register'),
 ]
