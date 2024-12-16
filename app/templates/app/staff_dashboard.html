@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'app/css/style/admin/admin.css' %}" />
+    <title>Staff Dashboard - CN Salon</title>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>CN Salon Staff</h2>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li class="active"><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#profile">Tài khoản</a></li>
+          <li><a href="#logout">Đăng xuất</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <h1>CN Salon</h1>
+        <div class="user-info">
+          <p>Xin chào, <strong>Nhân viên</strong></p>
+          <img src="https://via.placeholder.com/40" alt="User Avatar">
+        </div>
+      </header>
+
+      <!-- Statistics Section (for staff) -->
+      <section class="stats">
+        <div class="stat-card">
+          <h2>Bài viết của tôi</h2>
+          <p>{{ posts_count }}</p>  <!-- Đếm số lượng bài viết của staff -->
+        </div>
+      </section>
+
+      <!-- My Posts -->
+      <section class="posts">
+        <h2>Bài viết của tôi</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tiêu đề</th>
+              <th>Ngày tạo</th>
+              <th>Nội dung</th>
+              <th>Hình ảnh</th>  <!-- New column for displaying image -->
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for post in posts %}
+              <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.created_at }}</td>
+                <td>{{ post.content }}</td>
+                <td>
+                  {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="Post Image" style="width: 100px; height: auto;">
+                  {% else %}
+                    Không có hình ảnh
+                  {% endif %}
+                </td>
+                <td>
+                  <a href="{% url 'edit_post' post.id %}" class="edit-btn">Sửa</a>
+                  <a href="{% url 'delete_post' post.id %}" class="delete-btn">Xóa</a>
+                </td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="5">Bạn chưa có bài viết nào.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Add New Post Section -->
+      <section class="add-post">
+        <h2>Thêm bài viết mới</h2>
+        <form action="{% url 'create_post' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label for="title">Tiêu đề</label>
+          <input type="text" id="title" name="title" required>
+
+          <label for="content">Nội dung</label>
+          <textarea id="content" name="content" required></textarea>
+
+          <!-- Image upload field -->
+          <label for="image">Hình ảnh (Tùy chọn)</label>
+          <input type="file" id="image" name="image" accept="image/*">
+
+          <button type="submit">Thêm bài viết</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

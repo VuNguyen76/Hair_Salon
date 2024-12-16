@@ -133,7 +133,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/images')
 
 # settings.py
 LOGOUT_REDIRECT_URL = '/'  # Hoặc URL bạn muốn người dùng được chuyển hướng sau khi logout
-
+LOGIN_URL = '/login/'  # Trang đăng nhập mặc định cho người dùng thông thường
+LOGIN_REDIRECT_URL = '/index/'  # Sau khi đăng nhập thành công sẽ chuyển hướng đến trang dashboard của người dùng thường
+ADMIN_LOGIN_URL = '/admin/login/'
 
 
 

@@ -89,5 +89,17 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return self.address
 
+# Model bài viết
+class Post(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    image = models.ImageField(upload_to='posts/', blank=True, null=True)  # New image field
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
 
 
