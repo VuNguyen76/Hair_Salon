@@ -78,13 +78,10 @@ body {
   margin: 0 auto;
 }
 
-.hidden {
-  display: none;
-}
-
 a {
   text-decoration: none;
 }
-a:visited {
-  color: black;
+
+.hidden {
+  display: none;
 }

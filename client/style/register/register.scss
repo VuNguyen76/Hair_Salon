@@ -81,12 +81,9 @@ body {
   max-width: calc(100% - 10px);
   margin: 0 auto;
 }
-.hidden {
-  display: none;
-}
 a {
   text-decoration: none;
-  &:visited {
-    color: black;
-  }
+}
+.hidden {
+  display: none;
 }
