@@ -1,2 +1,3 @@
-import trangChu from "./trang_chu.js";
-trangChu();
+import { handleUserMenu, handleBanner } from './trang_chu.js';
+handleUserMenu();
+handleBanner(5);

@@ -293,51 +293,6 @@ header .row_header .user-dashboard li i {
   transition: 0.2s ease-in-out;
 }
 
-.rectangle {
-  display: inline-block;
-  width: 8px;
-  height: 50px;
-  background-color: white;
-  border-radius: 10px;
-  margin-right: 15px;
-}
-
-.heading {
-  font-family: "Sen", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 90px;
-  display: flex;
-  align-items: center;
-}
-
-.introduce .row_introduce {
-  display: flex;
-  gap: 100px;
-}
-.introduce .row_introduce .infor {
-  max-width: 600px;
-  text-align: left;
-}
-.introduce .row_introduce .infor .desc_introduce {
-  font-family: "Arial, Helvetica, sans-serif";
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 54px;
-  margin-left: 20px;
-}
-.introduce .row_introduce .pic_introduce {
-  width: 500px;
-  height: 400px;
-  background-position: contain;
-  margin-top: 20px;
-}
-.introduce .row_introduce .btn-introduce {
-  margin-left: 190px;
-  margin-top: 30px;
-}
-
 .footer {
   background-color: #1a1a1a;
   color: #f5f5f5;
@@ -399,4 +354,57 @@ header .row_header .user-dashboard li i {
   color: #fff;
   opacity: 0.3;
   margin: 0 auto;
+}
+
+.introduce .row_introduce {
+  width: 100%;
+  text-align: left;
+}
+.introduce .row_introduce .heading_introduce {
+  font-family: "Sen", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 90px;
+  display: flex;
+  align-items: center;
+}
+.introduce .row_introduce .rectangle {
+  display: inline-block;
+  width: 8px;
+  height: 50px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-right: 15px;
+}
+.introduce .row_introduce .desc_introduce {
+  font-family: "Arial, Helvetica, sans-serif";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 54px;
+  margin-left: 20px;
+  color: rgb(204, 205, 206);
+  font-style: italic;
+}
+
+.our .row_our .row_img {
+  display: flex;
+}
+.our .row_our .row_img .our_img {
+  width: 600px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.our .row_our .row_img .col-right {
+  height: 873px;
+}
+.our .row_our .row_img .our_img-row {
+  width: 100%;
+}
+
+.img-fixed {
+  width: 100vw;
+  height: 600px;
+  background: url(/client/img/about/staff3.jpg) no-repeat center/cover;
+  background-attachment: fixed;
 }
