@@ -1,8 +1,4 @@
-export default function trangChu() {
-  handleBanner();
-  handleUserMenu();
-}
-function handleBanner() {
+export function handleBanner(bannerLength) {
   const listBanner = document.querySelector(".list_banner");
   const nextBtn = document.querySelector(".next_banner");
   const prevBtn = document.querySelector(".prev_banner");
@@ -15,14 +11,14 @@ function handleBanner() {
     clearInterval(intervalID);
     intervalID = setInterval(() => {
       currentBanner++;
-      if (currentBanner > 5) currentBanner = 1;
+      if (currentBanner > bannerLength) currentBanner = 1;
       updateBanner();
     }, 3000);
   };
   autoSlideBanner();
   nextBtn.onclick = () => {
     currentBanner++;
-    if (currentBanner > 5) currentBanner = 1;
+    if (currentBanner > bannerLength) currentBanner = 1;
     updateBanner();
     autoSlideBanner();
   };
@@ -35,7 +31,7 @@ function handleBanner() {
   };
 }
 
-function handleUserMenu() {
+export function handleUserMenu() {
   const user = document.querySelector(".user");
   const userDashboard = document.querySelector(".user-dashboard");
   user.onclick = () => {
