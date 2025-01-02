@@ -338,6 +338,176 @@ header .row_header .user-dashboard li i {
   margin-top: 30px;
 }
 
+.service {
+  margin-top: 50px;
+  height: 470px;
+}
+.service .row_service {
+  display: flex;
+  justify-content: space-between;
+}
+.service .row_service .service-item {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: italic;
+  width: 339px;
+  height: 417px;
+  padding: 10px;
+  border-radius: 40px;
+  background: linear-gradient(180deg, #ffffff 0%, #000000 100%);
+}
+.service .row_service .service-item:hover {
+  width: 400px;
+  height: 470px;
+  transition: 0.2s ease-in-out;
+}
+.service .row_service .service-item:hover img {
+  width: 100%;
+}
+
+.combo {
+  height: 400px;
+  margin-top: 100px;
+}
+.combo .row_combo {
+  display: flex;
+  justify-content: space-between;
+}
+.combo .row_combo .combo-item:hover {
+  width: 350px;
+  height: 400px;
+  transition: 0.2s ease-in-out;
+}
+.combo .row_combo .combo-item:hover img {
+  width: 100%;
+}
+
+.album {
+  margin-top: 50px;
+}
+.album .row_album .row {
+  display: flex;
+  justify-content: center;
+}
+.album .row_album .row .album-item {
+  margin: 30px;
+}
+
+.feedback {
+  background: #73726f;
+  /* right-content */
+  /* left-content */
+}
+.feedback .row-feedback {
+  padding: 96px 0;
+  padding: 30px;
+  display: flex;
+  position: relative;
+}
+.feedback .right-content {
+  min-width: 340px;
+}
+.feedback .name-user {
+  color: #f7f7f7;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 34px;
+  margin: 18px 0 4px;
+}
+.feedback .feedback-content {
+  color: #fff;
+  max-width: 740px;
+  font-size: 2.6rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 40px;
+  position: absolute;
+  right: 60px;
+}
+.feedback .circle {
+  display: flex;
+  gap: 30px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.feedback .circle .box {
+  width: 8px;
+  height: 8px;
+  border-radius: 6px;
+  background: #000;
+}
+.feedback .circle .box:hover {
+  background: #ffb900;
+}
+
+.staff {
+  margin-top: 50px;
+}
+.staff .row_staff .row {
+  display: flex;
+  justify-content: center;
+  gap: 53px;
+  margin: 53px;
+}
+
+.tech {
+  margin-top: 50px;
+}
+.tech .row_tech .row {
+  display: flex;
+  justify-content: center;
+  gap: 53px;
+  margin: 53px;
+}
+
+.brand {
+  height: 310px;
+  margin-bottom: 120px;
+}
+.brand .row_brand {
+  display: flex;
+  justify-content: space-around;
+}
+.brand .row_brand .brand-item:hover {
+  width: 310px;
+  height: 310px;
+  transition: 0.2s ease-in-out;
+}
+.brand .row_brand .brand-item:hover img {
+  width: 100%;
+}
+
+.comment-dashboard {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(93, 88, 88, 0.5);
+  color: white;
+  font-family: "Arial, Helvetica, sans-serif";
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.comment-dashboard .row-comment {
+  border: 15px solid white;
+  background-color: black;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .footer {
   background-color: #1a1a1a;
   color: #f5f5f5;

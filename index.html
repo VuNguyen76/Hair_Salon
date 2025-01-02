@@ -16,7 +16,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="shortcut icon" href="/client/img/favicon/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="/client/img/favicon/favicon.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="./client/style/index/main.css" />
     <title>Hair Salon Booking Website</title>
   </head>
@@ -25,14 +29,16 @@
     <header>
       <div class="container">
         <div class="row_header">
-            <a href="/"><img src="./client/img/trang_chu/LOGO.png" alt="Logo CN" /></a>
+          <a href="/"
+            ><img src="./client/img/trang_chu/LOGO.png" alt="Logo CN"
+          /></a>
           <nav>
             <ul class="nav_list">
               <li>
                 <a href="#">TRANG CHU</a>
               </li>
               <li>
-                <a href="./client/views/about.html  ">VE CHUNG TOI</a>
+                <a href="./client/views/about.html ">VE CHUNG TOI</a>
               </li>
               <li>
                 <a href="#">DICH VU</a>
@@ -49,95 +55,396 @@
             <button class="btn_booking">ĐẶT LỊCH NGAY</button>
           </div>
           <div class="user">
-            <i class="fa-solid fa-user"></i>        
+            <i class="fa-solid fa-user"></i>
           </div>
           <div class="user-dashboard hidden">
             <ul class="user-menu">
               <li>
-                <a href="#"><i class="fa-solid fa-list-check"></i>   Quản lý lịch đã đặt</a>
+                <a href="#"
+                  ><i class="fa-solid fa-list-check"></i> Quản lý lịch đã đặt</a
+                >
               </li>
               <li>
-                <a href="#"><i class="fa-solid fa-gear"></i>   Chỉnh sửa thông tin</a>
+                <a href="#"
+                  ><i class="fa-solid fa-gear"></i> Chỉnh sửa thông tin</a
+                >
+              </li>
+              <li class="comment">
+                <a href="#"
+                  ><i class="fa-solid fa-comments"></i> Đóng góp ý kiến</a
+                >
               </li>
               <li>
-                <a href="#"><i class="fa-solid fa-comments"></i>   Đóng góp ý kiến</a>
+                <a href="/client/views/login.html"
+                  ><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a
+                >
               </li>
               <li>
-                <a href="/client/views/login.html"><i class="fa-solid fa-right-to-bracket"></i>   Đăng nhập</a>
-              </li>
-              <li>
-                <a href="#"><i class="fa-solid fa-right-from-bracket"></i>   Đăng xuất</a>
+                <a href="#"
+                  ><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a
+                >
               </li>
             </ul>
           </div>
+        </div>
       </div>
     </header>
     <!-- Body -->
     <main>
-        <section>
-          <div class="banner">
-              <div class="container">
-                  <div class="row_banner">
-                      <div class="list_banner"> 
-                       <img class="banner_item" src="./client/img/trang_chu/banner/banner1.jpg" alt="">
-                       <img class="banner_item" src="./client/img/trang_chu/banner/banner2.png" alt="">
-                       <img class="banner_item" src="./client/img/trang_chu/banner/banner3.jpg" alt="">
-                       <img class="banner_item" src="./client/img/trang_chu/banner/banner4.jpg" alt="">
-                       <img class="banner_item" src="./client/img/trang_chu/banner/banner5.jpg" alt="">
-                      </div>
-                      <div class="btn_banner next_banner">›</div>
-                      <div class="btn_banner prev_banner">‹</div>
-                  </div>
+      <section>
+        <div class="banner">
+          <div class="container">
+            <div class="row_banner">
+              <div class="list_banner">
+                <img
+                  class="banner_item"
+                  src="./client/img/trang_chu/banner/banner1.jpg"
+                  alt=""
+                />
+                <img
+                  class="banner_item"
+                  src="./client/img/trang_chu/banner/banner2.png"
+                  alt=""
+                />
+                <img
+                  class="banner_item"
+                  src="./client/img/trang_chu/banner/banner3.jpg"
+                  alt=""
+                />
+                <img
+                  class="banner_item"
+                  src="./client/img/trang_chu/banner/banner4.jpg"
+                  alt=""
+                />
+                <img
+                  class="banner_item"
+                  src="./client/img/trang_chu/banner/banner5.jpg"
+                  alt=""
+                />
               </div>
-          </div>
-        </section>
-        <section>
-          <div class="introduce">
-            <div class="container">
-              <div class="row_introduce">
-                <div class="infor">
-                  <h1 class="heading">
-                    <span class="rectangle"></span>
-                    GIỚI THIỆU TỔNG QUAN
-                  </h1>
-                  <p class="desc_introduce">
-                    CN Hair Salon – Nơi mang lại vẻ đẹp hoàn hảo cho mái tóc của bạn! Với đội ngũ stylist giàu kinh nghiệm và dịch vụ xịn xò, chúng tôi giúp bạn tự tin tỏa sáng với phong cách riêng biệt. Hãy để CN giúp bạn nâng cao phong thái!
-                  </p>
-                  <button class="btn-introduce"><a style="color: black;" href="./client/views/about.html">XEM THÊM</a></button>
-                </div>
-                <img class="pic_introduce" src="./client/img/trang_chu/about.png" alt="">
-              </div>
+              <div class="btn_banner next_banner">›</div>
+              <div class="btn_banner prev_banner">‹</div>
             </div>
           </div>
-        </section>
-        <!-- Service -->
-        <section>
-          <div class="service">
-            <div class="container">
-              <div class="row_service">
+        </div>
+      </section>
+      <section>
+        <div class="introduce">
+          <div class="container">
+            <div class="row_introduce">
+              <div class="infor">
                 <h1 class="heading">
                   <span class="rectangle"></span>
-                  DỊCH VỤ NỔI BẬT
+                  GIỚI THIỆU TỔNG QUAN
                 </h1>
-                <div class="service-item cut">
-                  <img src="./client/img/trang_chu/Service/cut.png" alt="">
+                <p class="desc_introduce">
+                  CN Hair Salon – Nơi mang lại vẻ đẹp hoàn hảo cho mái tóc của
+                  bạn! Với đội ngũ stylist giàu kinh nghiệm và dịch vụ xịn xò,
+                  chúng tôi giúp bạn tự tin tỏa sáng với phong cách riêng biệt.
+                  Hãy để CN giúp bạn nâng cao phong thái!
+                </p>
+                <button class="btn-introduce">
+                  <a style="color: black" href="./client/views/about.html"
+                    >XEM THÊM</a
+                  >
+                </button>
+              </div>
+              <img
+                class="pic_introduce"
+                src="./client/img/trang_chu/about.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Service -->
+      <section>
+        <div class="service">
+          <div class="container">
+            <h1 class="heading">
+              <span class="rectangle"></span>
+              DỊCH VỤ NỔI BẬT
+            </h1>
+            <div class="row_service">
+              <div class="service-item cut">
+                <a href="#!"
+                  ><img src="./client/img/trang_chu/Service/cut.png" alt=""
+                /></a>
+                <p style="margin-top: 20px">CẮT TÓC</p>
+              </div>
+              <div class="service-item uon">
+                <a href="#!"
+                  ><img src="./client/img/trang_chu/Service/uon.png" alt=""
+                /></a>
+                <p style="margin-top: 20px">UỐN ĐỊNH HÌNH</p>
+              </div>
+              <div class="service-item hair-color">
+                <a href="#!"
+                  ><img src="./client/img/trang_chu/Service/color.png" alt=""
+                /></a>
+                <p style="margin-top: 20px">THAY ĐỔI MÀU TÓC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Combo -->
+      <section>
+        <div class="combo">
+          <div class="container">
+            <h1 class="heading">
+              <span class="rectangle"></span>
+              COMBO ƯU ĐÃI
+            </h1>
+            <div class="row_combo">
+              <div class="combo-item cb1">
+                <a href="#!"
+                  ><img src="./client/img/trang_chu/combo/combo1.png" alt=""
+                /></a>
+              </div>
+              <div class="combo-item cb2">
+                <a href="#!"
+                  ><img src="./client/img/trang_chu/combo/combo2.png" alt=""
+                /></a>
+              </div>
+              <div class="combo-item cb3">
+                <a href="#!"
+                  ><img src="./client/img/trang_chu/combo/combo3.png" alt=""
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Album -->
+      <section>
+        <div class="album">
+          <div class="container">
+            <h1 class="heading">
+              <span class="rectangle"></span>
+              BỘ SƯU TẬP MẪU TÓC
+            </h1>
+            <div class="row_album">
+              <div class="row">
+                <div class="album-item ab1">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/album/album1.png" alt=""
+                  /></a>
                 </div>
-                <div class="service-item uon">
-                  <img src="./client/img/trang_chu/Service/uon.png" alt="">
+                <div class="album-item ab2">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/album/album2.png" alt=""
+                  /></a>
                 </div>
-                <div class="service-item hair-color">
-                  <img src="./client/img/trang_chu/Service/color.png" alt="">
+              </div>
+              <div class="row">
+                <div class="album-item ab3">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/album/album3.png" alt=""
+                  /></a>
+                </div>
+                <div class="album-item ab4">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/album/album4.png" alt=""
+                  /></a>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <!-- Combo -->
-        <!-- Album -->
-        <!-- Feedback -->
-        <!-- Staff -->
-        <!-- Tech -->
-        <!-- Address -->
+        </div>
+      </section>
+      <!-- Feedback -->
+      <section>
+        <div class="album">
+          <div class="container">
+            <h1 class="heading">
+              <span class="rectangle"></span>
+              ĐÁNH GIÁ CỦA KHÁCH HÀNG
+            </h1>
+            <div class="feedback">
+              <div class="main-content">
+                <div class="row-feedback">
+                  <!-- right-content -->
+                  <div class="right-content">
+                    <img
+                      src="./client/img/trang_chu/Feedback/feedback1.png"
+                      alt=""
+                      class="img"
+                    />
+                    <h3 class="name-user">Nhã Uyên</h3>
+                  </div>
+                  <!-- left-content -->
+                  <div class="left-content">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="30"
+                        height="28"
+                        viewBox="0 0 30 28"
+                        fill="none"
+                      >
+                        <path
+                          d="M12.9168 1.23505V6.26199C12.9168 6.94407 12.3663 7.49652 11.6875 7.49652C9.26544 7.49652 7.94779 9.99114 7.76491 14.9155H11.6875C12.3662 14.9155 12.9168 15.4688 12.9168 16.1501V26.7647C12.9168 27.4465 12.3663 27.999 11.6875 27.999H1.22938C0.550795 27.999 1.90735e-06 27.4459 1.90735e-06 26.7647V16.15C1.90735e-06 13.7896 0.237282 11.6235 0.703081 9.71055C1.1816 7.74949 1.91613 6.035 2.8858 4.61422C3.88306 3.15417 5.13161 2.00845 6.59457 1.21054C8.06863 0.407543 9.78211 0 11.688 0C12.3662 0.000516891 12.9168 0.553486 12.9168 1.23505ZM28.771 7.49696C29.4496 7.49696 30 6.94407 30 6.26294V1.23497C30 0.553488 29.4496 0.000951767 28.771 0.000951767C26.866 0.000951767 25.1517 0.408579 23.6785 1.21149C22.2148 2.00931 20.9664 3.15408 19.9693 4.61517C18.999 6.03595 18.2645 7.75052 17.786 9.71254C17.32 11.6255 17.0832 13.7917 17.0832 16.151V26.7657C17.0832 27.4476 17.6341 28 18.3125 28H28.771C29.4496 28 30 27.447 30 26.7657V16.151C30 15.4693 29.4496 14.9165 28.771 14.9165H24.9035C25.0841 9.99165 26.3828 7.49696 28.771 7.49696Z"
+                          fill="#000"
+                        />
+                      </svg>
+                    </div>
+                    <div class="feedback-content">
+                      Mình rất hài lòng với dịch vụ tại salon. Nhân viên nhiệt
+                      tình, tay nghề cao, và tư vấn kiểu tóc cực kỳ chu đáo.
+                      Không gian sạch sẽ, thoải mái, giá cả hợp lý. Chắc chắn sẽ
+                      quay lại lần sau!
+                    </div>
+                  </div>
+                  <div class="circle">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Staff -->
+      <section>
+        <div class="staff">
+          <div class="container">
+            <h1 class="heading">
+              <span class="rectangle"></span>
+              ĐỘI NGŨ NHÂN VIÊN
+            </h1>
+            <div class="row_staff">
+              <div class="row" style="margin-top: 0">
+                <div class="staff-item">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/staff/staff1.png" alt=""
+                  /></a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="staff-item">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/staff/staff2.png" alt=""
+                  /></a>
+                </div>
+                <div class="staff-item">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/staff/staff3.png" alt=""
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Tech -->
+      <section>
+        <div class="tech">
+          <div class="container">
+            <h1 class="heading">
+              <span class="rectangle"></span>
+              KHÔNG GIAN & CÔNG NGHỆ
+            </h1>
+            <div class="row_tech">
+              <div class="row" style="margin-top: 0">
+                <div class="tech-item">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/tech/tech1.png" alt=""
+                  /></a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="tech-item">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/tech/tech2.png" alt=""
+                  /></a>
+                </div>
+                <div class="tech-item">
+                  <a href="#!"
+                    ><img src="./client/img/trang_chu/tech/tech3.png" alt=""
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Address -->
+      <section>
+        <div class="brand">
+          <div class="container">
+            <h1 class="heading">
+              <span class="rectangle"></span>
+              CHI NHÁNH HOẠT ĐỘNG
+            </h1>
+            <div class="row_brand">
+              <div class="brand-item">
+                <a href="#!"
+                  ><img
+                    src="./client/img/trang_chu/address/address1.png"
+                    alt=""
+                /></a>
+              </div>
+              <div class="brand-item">
+                <a href="#!"
+                  ><img
+                    src="./client/img/trang_chu/address/address2.png"
+                    alt=""
+                /></a>
+              </div>
+              <div class="brand-item">
+                <a href="#!"
+                  ><img
+                    src="./client/img/trang_chu/address/address3.png"
+                    alt=""
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="comment-dashboard hidden">
+          <div class="container">
+            <div class="row-comment">
+              <h1 class="heading">Hãy cho chúng tôi biết ý kiến của bạn!!!</h1>
+              <textarea
+                name="text"
+                class="formTextarea"
+                cols="100"
+                rows="10"
+                style="
+                  border-radius: 20px;
+                  padding: 20px;
+                  font-size: 2rem;
+                  margin-bottom: 10px;
+                  outline: none;
+                  display: block;
+                "
+                placeholder="Nhập ý kiến ở đây..."
+              ></textarea>
+
+              <div style="text-align: center">
+                <button
+                  class="btn-comment"
+                  style="margin-bottom: 15px; width: 30%"
+                  type="submit"
+                >
+                  Gửi ý kiến
+                </button>
+                <p style="min-width: 500px">
+                  Rất cảm ơn bạn đã góp ý chúng tôi sẽ ghi nhận và cải thiện
+                  chất lượng dịch vụ. Nếu bạn cần sự hỗ trợ hãy
+                  <a style="color: #dd1956" href="#">Liên hệ</a> chúng tôi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <!-- Footer -->
     <footer class="footer">
