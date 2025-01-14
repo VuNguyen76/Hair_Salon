@@ -27,7 +27,6 @@ function handleBanner(bannerLength) {
     updateBanner();
     autoSlideBanner();
   };
-
   prevBtn.onclick = () => {
     currentBanner--;
     if (currentBanner < 1) currentBanner = 5;
@@ -35,7 +34,6 @@ function handleBanner(bannerLength) {
     autoSlideBanner();
   };
 }
-
 function handleUserMenu() {
   const user = document.querySelector(".user");
   const userDashboard = document.querySelector(".user-dashboard");
@@ -56,6 +54,7 @@ function handleComment() {
   comment.onclick = () => {
     commentDashboard.classList.toggle("hidden");
     userDashboard.classList.toggle("hidden");
+    console.log(4);
   };
   window.onclick = (e) => {
     e.target.closest(".comment-dashboard");
