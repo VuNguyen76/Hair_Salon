@@ -1,0 +1,194 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Sen:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="shortcut icon"
+      href="{%static 'img/favicon/favicon.png'%}"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{%static 'css/global/global.css'%}" />
+    <link rel="stylesheet" href="{% block style %}{% endblock %}" />
+    <title>{% block title %}Hair Salon Booking Website{% endblock %}</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="row_header">
+          <a href="/"
+            ><img src="{%static 'img/trang_chu/LOGO.png'%}" alt="Logo CN"
+          /></a>
+          <nav>
+            <ul class="nav_list">
+              <li>
+                <a href="/">TRANG CHU</a>
+              </li>
+              <li>
+                <a href="/about/">VE CHUNG TOI</a>
+              </li>
+              <li>
+                <a href="/">DICH VU</a>
+              </li>
+              <li>
+                <a href="/">LIEN HE</a>
+              </li>
+              <li>
+                <a href="/">BANG GIA</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="action">
+            <button class="btn_booking">
+              <a style="color: black" href="/booking/">ĐẶT LỊCH NGAY</a>
+            </button>
+          </div>
+          <div class="user">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="user-dashboard hidden">
+            <ul class="user-menu">
+              {% if user.is_authenticated %}
+              <li>
+                <a href="#">
+                  <i class="fa-solid fa-list-check"></i> Quản lý lịch đã đặt
+                </a>
+              </li>
+              <li class="comment">
+                <i class="fa-solid fa-comments"></i> Đóng góp ý kiến
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-solid fa-gear"></i> Chỉnh sửa thông tin
+                </a>
+              </li>
+              <li>
+                <a href="/logout/">
+                  <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                </a>
+              </li>
+              {% else %}
+              <li style="margin: 0; margin-bottom: 20px">
+                <a href="/login/">
+                  <i class="fa-solid fa-right-to-bracket"></i> Đăng nhập
+                </a>
+              </li>
+              <li style="margin: 0">
+                <a href="/register/">
+                  <i class="fa-solid fa-user-plus"></i> Đăng ký
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      {% block content %}{% endblock %}
+      <section>
+        <div class="comment-dashboard hidden">
+          <div class="container">
+            <div class="row-comment">
+              <h1 class="heading">Hãy cho chúng tôi biết ý kiến của bạn!!!</h1>
+              <textarea
+                name="text"
+                class="formTextarea"
+                cols="70"
+                rows="10"
+                style="
+                  border-radius: 20px;
+                  padding: 20px;
+                  font-size: 2rem;
+                  margin-bottom: 10px;
+                  outline: none;
+                  display: block;
+                "
+                placeholder="Nhập ý kiến ở đây..."
+              ></textarea>
+
+              <div style="text-align: center">
+                <button
+                  class="btn-comment"
+                  style="margin-bottom: 15px; width: 30%"
+                  type="submit"
+                >
+                  Gửi ý kiến
+                </button>
+                <p style="min-width: 500px">
+                  Rất cảm ơn bạn đã góp ý chúng tôi sẽ ghi nhận và cải thiện
+                  chất lượng dịch vụ. Nếu bạn cần sự hỗ trợ hãy
+                  <a style="color: #dd1956" href="#">Liên hệ</a> chúng tôi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>CN Hair Salon</h3>
+          <p>
+            CN Hair Salon – Trao niềm tin trao sắc đẹp, nơi mang lại vẻ đẹp hoàn
+            hảo cho mái tóc của bạn!
+          </p>
+        </div>
+        <div class="footer-contact">
+          <h3>Liên hệ</h3>
+          <div class="phone">
+            <img src="{%static 'img/booking/phone.png'%}" alt="" /> Điện thoại:
+            0901238764
+          </div>
+          <div class="time-open" style="margin: 15px 0">
+            <img src="{%static 'img/booking/watch.png'%}" alt="" /> Giờ mở cửa:
+            8:30 - 19:30
+          </div>
+          <div class="address">
+            <img src="{%static 'img/booking/local.png'%}" alt="" /> Địa chỉ: 189
+            Trung Mỹ Tây, Tô Ký, Q.12, TP.HCM
+          </div>
+        </div>
+        <div class="footer-map">
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15673.130950940584!2d106.6173239518588!3d10.86608666295462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b4af96ff427%3A0xfbee615e95fc783f!2sHair%20Salon%20Phong%20C%C3%A1ch!5e0!3m2!1svi!2sus!4v1735050997578!5m2!1svi!2sus"
+              width="400"
+              height="250"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+        <div class="rectangle"></div>
+        <div class="desc-footer">
+          Copyright ©202 cnhairsalon.com. All rights reserved
+        </div>
+      </div>
+    </footer>
+    {% block script %}{% endblock %}
+    <script type="module" src=""></script>
+  </body>
+</html>

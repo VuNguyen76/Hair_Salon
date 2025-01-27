@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/manage/manage.css' %}" />
+    <title>Admin Dashboard - CN Salon</title>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>CN Salon Admin</h2>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li class="active"><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#employees">Nhân sự</a></li>
+          <li><a href="#payroll">Lương thưởng</a></li>
+          <li><a href="#finances">Tài chính</a></li>
+          <li><a href="#reports">Báo cáo</a></li>
+          <li><a href="#profile">Tài khoản</a></li>
+          <li><a href="#logout">Đăng xuất</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <h1>CN Salon</h1>
+        <div class="user-info">
+          <p>Xin chào, <strong>Chủ Salon</strong></p>
+          <img src="https://via.placeholder.com/40" alt="User Avatar">
+        </div>
+      </header>
+
+      <!-- Statistics Section -->
+      <section class="stats">
+        <div class="stat-card">
+          <h2>Doanh thu tháng này</h2>
+          <p>0</p>
+        </div>
+        <div class="stat-card">
+          <h2>Số nhân viên</h2>
+          <p>0</p>
+        </div>
+        <div class="stat-card">
+          <h2>Khách hàng phục vụ</h2>
+          <p>0</p>
+        </div>
+      </section>
+
+      <!-- Employee Management -->
+      <section class="employees">
+        <h2>Quản lý nhân sự</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tên nhân viên</th>
+              <th>Chức vụ</th>
+              <th>Lương</th>
+              <th>Thưởng</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nguyễn Văn A</td>
+              <td>Thợ chính</td>
+              <td>8,000,000 VNĐ</td>
+              <td>1,000,000 VNĐ</td>
+              <td><button class="edit-btn">Sửa</button> <button class="delete-btn">Xóa</button></td>
+            </tr>
+            <tr>
+              <td>Trần Thị B</td>
+              <td>Thợ phụ</td>
+              <td>5,000,000 VNĐ</td>
+              <td>500,000 VNĐ</td>
+              <td><button class="edit-btn">Sửa</button> <button class="delete-btn">Xóa</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
