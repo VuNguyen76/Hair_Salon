@@ -1,17 +1,16 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{%static 'css/booking/booking.css'%}" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Sen:wght@400..800&display=swap"
       rel="stylesheet"
     />
     <link
       rel="shortcut icon"
-      href="{%static 'img/favicon.png'%}"
+      href="{% static 'booking/img/favicon.png' %}"
       type="image/x-icon"
     />
     <link
@@ -21,125 +20,120 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'booking/css/booking.css' %}" />
 
     <title>Booking</title>
   </head>
   <body>
     <div class="booking">
       <div class="container row_booking">
-        <!-- Booking Left -->
-        <div class="booking_left">
-          <div class="booking_heading">
-            <a href="/">
-              <img src="{%static 'img/LOGO.png'%}" alt="logo" class="logo" />
-            </a>
-          </div>
-          <div class="booking_form">
-            <form action="#">
-              <h3>Thông tin liên hệ</h3>
-              <input
-                type="text"
-                class="formInput"
-                placeholder="Số điện thoại"
-              />
-              <div class="input_layout">
-                <select class="formInput">
-                  <option value="" disabled selected hidden>Anh/Chị</option>
-                  <option value="nam">Anh</option>
-                  <option value="nữ">Chị</option>
-                </select>
-                <input type="text" class="formInput" placeholder="Họ Tên" />
-              </div>
-              <h3>Thông tin cuộc hẹn</h3>
-              <select class="formInput" style="width: 100%">
-                <option value="" disabled selected hidden>Chi nhánh</option>
-                <option value="Hà nội">
-                  CN Hair Salon 145 Chùa Láng, Đống Đa, Hà Nội
-                </option>
-                <option value="Đà nẵng">
-                  CN Hair Salon 85 Đ. Trần Cao Vân, Phường Minh An, Hội An,
-                  Quảng Nam
-                </option>
-                <option value="HCM">
-                  Cn Hair Salon 189 Trung Mỹ Tây, Tô Ký, Q.12, TP.HCM
-                </option>
-              </select>
-              <div class="choose_service formInput">Chọn dịch vụ</div>
-              <textarea
-                name="text"
-                class="formTextarea"
-                cols="30"
-                rows="5"
-                placeholder="Lời nhắn..."
-              ></textarea>
-            </form>
-          </div>
+        <div class="booking_heading">
+          <a href="/">
+            <img
+              src="{% static 'booking/img/LOGO.png' %}"
+              alt="logo"
+              class="logo"
+            />
+          </a>
         </div>
-        <!-- Booking Right -->
-        <div class="booking_right">
-          <div class="booking_heading">
-            <div class="brand">
-              <span>CN SALON</span> PROFESSIONAL HAIR SALON
-            </div>
-            <div class="phone">
-              <img src="{%static 'img/booking/phone.png'%}" alt="" /> Điện
-              thoại: 0901238764
-            </div>
-            <div class="time-open">
-              <img src="{%static 'img/booking/watch.png'%}" alt="" /> Giờ mở
-              cửa: 8:30 - 19:30
-            </div>
-            <div class="address">
-              <img src="{%static 'img/booking/local.png'%}" alt="" /> Địa chỉ:
-              189 Trung Mỹ Tây, Tô Ký, Q.12, TP.HCM
-            </div>
-          </div>
+        <div class="booking_form">
+          <form method="POST">
+            {% csrf_token %} {{ form.non_field_errors }}
 
-          <div class="booking_option">
-            <h3>Chọn ngày hẹn</h3>
-            <div class="row">
-              <div class="col">Thứ 2</div>
-              <div class="col">Thứ 3</div>
-              <div class="col">Thứ 4</div>
-              <div class="col">Thứ 5</div>
+            <div class="form-group">
+              {{ form.phone_number }} {{ form.phone_number.errors }}
             </div>
-            <div class="row">
-              <div class="col">Thứ 6</div>
-              <div class="col">Thứ 7</div>
-              <div class="col">Chủ nhật</div>
+
+            <div class="form-group">
+              {{ form.full_name }} {{ form.full_name.errors }}
             </div>
-            <h3>Chọn giờ hẹn</h3>
-            <div class="row">
-              <div class="col">08:30</div>
-              <div class="col">09:00</div>d
-              <div class="col">09:30</div>
-              <div class="col">10:00</div>
-              <div class="col">10:30</div>
-              <div class="col">11:00</div>
+
+            <div class="form-group">
+              {{ form.gender }} {{ form.gender.errors }}
             </div>
-            <div class="row">
-              <div class="col">13:00</div>
-              <div class="col">13:30</div>
-              <div class="col">14:00</div>
-              <div class="col">14:30</div>
-              <div class="col">15:00</div>
-              <div class="col">15:30</div>
+
+            <div class="form-group">
+              {{ form.branch }} {{ form.branch.errors }}
             </div>
-            <div class="row">
-              <div class="col">16:00</div>
-              <div class="col">16:30</div>
-              <div class="col">17:00</div>
-              <div class="col">17:30</div>
-              <div class="col">18:00</div>
-              <div class="col">18:30</div>
+
+            <div class="form-group">
+              {{ form.booking_date }} {{ form.booking_date.errors }}
             </div>
-          </div>
-          <button type="submit" class="btn_booking">
-            <img src="{%static 'img/booking/date.png'%}" alt="" />Đặt Ngay
-          </button>
+
+            <div class="form-group">
+              {{ form.booking_time }} {{ form.booking_time.errors }}
+            </div>
+
+            <div class="form-group">
+              <label
+                class="label-service"
+                style="display: inline-block; margin-bottom: 10px"
+                for="service"
+                >Chọn dịch vụ</label
+              >
+              <div class="service hidden">
+                {% for checkbox in form.service %}
+                <div style="display: flex" class="checkbox">
+                  <label style="min-width: 90%">
+                    {{ checkbox.choice_label }}
+                  </label>
+                  {{ checkbox.tag }}
+                </div>
+                {% endfor %}
+              </div>
+              {{ form.service.errors }}
+            </div>
+
+            <div class="form-group">
+              {{ form.message }} {{ form.message.errors }}
+            </div>
+
+            <button
+              style="margin-left: 90px"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Đặt lịch
+            </button>
+          </form>
         </div>
       </div>
     </div>
-    <script src="{%static 'js/booking.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="{% static 'booking/js/booking.js' %}"></script>
+
+    <script>
+          {% comment %} document.addEventListener("DOMContentLoaded", function () {
+            console.log(123);
+            Toastify({
+              text: "Đặt lịch thành công!",
+              duration: 3000,
+              gravity: "top", // "top" hoặc "bottom"
+              position: "right", // "left", "center", hoặc "right"
+              background: " linear-gradient(135deg, #6dbf6b, #28a745)",
+              stopOnFocus: true, // Dừng thông báo khi di chuột vào
+            }).showToast();
+          }); {% endcomment %}
+      document.addEventListener("DOMContentLoaded", function () {
+        {% if messages %}
+          {% for message in messages %}
+            Toastify({
+              text: "Đặt lịch thành công!",
+              duration: 3000,
+              "hideDuration": "2000",
+              gravity: "top", // "top" hoặc "bottom"
+              position: "right", // "left", "center", hoặc "right"
+              backgroundColor: " #96c93d",
+              stopOnFocus: true, // Dừng thông báo khi di chuột vào
+            }).showToast();
+          {% endfor %}
+
+        {% endif %}
+      });
+    </script>
   </body>
 </html>

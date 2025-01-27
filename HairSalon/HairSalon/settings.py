@@ -135,3 +135,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'auth.User'
 
 CACHE_MIDDLEWARE_SECONDS = 0
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
