@@ -1,0 +1,24 @@
+.quan-ly-dat-lich {
+  margin: 150px 0;
+}
+.quan-ly-dat-lich h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "monospace", sans-serif;
+  font-weight: bold;
+}
+.quan-ly-dat-lich table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.quan-ly-dat-lich th,
+.quan-ly-dat-lich td {
+  border: 2px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.quan-ly-dat-lich th {
+  background: #007bff;
+  color: white;
+}

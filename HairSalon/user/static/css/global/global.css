@@ -159,7 +159,7 @@ a {
 
 button {
   min-width: 185px;
-  font-family: "Sen", sans-serif;
+  font-family: "monospace", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 2rem;
@@ -199,7 +199,7 @@ header .row_header nav .nav_list {
   display: flex;
 }
 header .row_header nav .nav_list li {
-  font-family: "Sen", sans-serif;
+  font-family: "monospace", sans-serif;
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
@@ -221,6 +221,7 @@ header .row_header .user {
   font-size: 3rem;
   background: linear-gradient(90deg, #ffffff 0%, #999999 100%);
   border-radius: 100%;
+  cursor: pointer;
 }
 header .row_header .user-dashboard {
   border-radius: 10px;
@@ -393,7 +394,7 @@ header .row_header .user-dashboard .comment:hover {
   transform: translate(-50%, -50%);
 }
 .comment-dashboard .row-comment .heading {
-  font-family: "Sen", sans-serif;
+  font-family: "monospace", sans-serif;
   font-weight: 600;
   font-size: 40px;
   line-height: 90px;

@@ -43,7 +43,6 @@ button {
   display: none !important;
 }
 
-
 header {
   background-color: black;
   margin-bottom: 20px;
@@ -86,6 +85,7 @@ header {
       font-size: 3rem;
       background: linear-gradient(90deg, #ffffff 0%, #999999 100%);
       border-radius: 100%;
+      cursor: pointer;
     }
     .user-dashboard {
       border-radius: 10px;

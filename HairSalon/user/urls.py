@@ -10,4 +10,5 @@ urlpatterns = [
    path('logout/', views.logout_view, name='logout'),
    path('manage/', views.manage, name='manage'),
    path('staff/', views.staff, name='staff'),
+   path('quan-ly-thong-tin-dat-hang/', views.quan_ly_dat_lich, name='quan_ly_dat_lich'),
 ]

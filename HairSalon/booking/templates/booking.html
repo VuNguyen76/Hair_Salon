@@ -78,20 +78,32 @@
               <div class="service hidden">
                 {% for checkbox in form.service %}
                 <div style="display: flex" class="checkbox">
-                  <label style="min-width: 90%">
+                  <label
+                    for="{{ checkbox.id_for_label }}"
+                    style="min-width: 90%"
+                  >
                     {{ checkbox.choice_label }}
                   </label>
                   {{ checkbox.tag }}
                 </div>
                 {% endfor %}
               </div>
+
               {{ form.service.errors }}
             </div>
 
             <div class="form-group">
               {{ form.message }} {{ form.message.errors }}
             </div>
-
+            <p>
+              Bạn có thể
+              <a style="color: #dd1956" href="/login">Đăng nhập</a> để quản lý
+              thông tin đặt lịch
+            </p>
+            <p>
+              Hoặc tra cứu cuộc hẹn đã đạt bằng cách ấn
+              <span style="color: #dd1956; cursor: pointer">Tra cứu </span>
+            </p>
             <button
               style="margin-left: 90px"
               type="submit"
@@ -107,33 +119,36 @@
     <script src="{% static 'booking/js/booking.js' %}"></script>
 
     <script>
-          {% comment %} document.addEventListener("DOMContentLoaded", function () {
-            console.log(123);
-            Toastify({
-              text: "Đặt lịch thành công!",
-              duration: 3000,
-              gravity: "top", // "top" hoặc "bottom"
-              position: "right", // "left", "center", hoặc "right"
-              background: " linear-gradient(135deg, #6dbf6b, #28a745)",
-              stopOnFocus: true, // Dừng thông báo khi di chuột vào
-            }).showToast();
-          }); {% endcomment %}
-      document.addEventListener("DOMContentLoaded", function () {
-        {% if messages %}
-          {% for message in messages %}
-            Toastify({
-              text: "Đặt lịch thành công!",
-              duration: 3000,
-              "hideDuration": "2000",
-              gravity: "top", // "top" hoặc "bottom"
-              position: "right", // "left", "center", hoặc "right"
-              backgroundColor: " #96c93d",
-              stopOnFocus: true, // Dừng thông báo khi di chuột vào
-            }).showToast();
-          {% endfor %}
+            {% comment %} document.addEventListener("DOMContentLoaded", function () {
+              console.log(123);
+              Toastify({
+                text: "Đặt lịch thành công!",
+                duration: 3000,
+                gravity: "top", // "top" hoặc "bottom"
+                position: "right", // "left", "center", hoặc "right"
+                background: " linear-gradient(135deg, #6dbf6b, #28a745)",
+                stopOnFocus: true, // Dừng thông báo khi di chuột vào
+              }).showToast();
+            }); {% endcomment %}
+        document.addEventListener("DOMContentLoaded", function () {
+          {% if messages %}
+            {% for message in messages %}
+              Toastify({
+                text: "Đặt lịch thành công!",
+                close:true,
+                duration: 3000,
+                "hideDuration": "2000",
+                gravity: "top",
+                position: "center",
+                stopOnFocus: true,
+                style: {
+                whiteSpace: "pre-line"
+      }
+              }).showToast();
+            {% endfor %}
 
-        {% endif %}
-      });
+          {% endif %}
+        });
     </script>
   </body>
 </html>

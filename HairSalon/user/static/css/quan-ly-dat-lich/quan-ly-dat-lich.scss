@@ -1,0 +1,27 @@
+@import "../global/variable";
+
+.quan-ly-dat-lich {
+  margin: 150px 0;
+
+  h2 {
+    text-align: center;
+    font-size: 3rem;
+    font-family: $font-second;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th,
+  td {
+    border: 2px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background: #007bff;
+    color: white;
+  }
+}

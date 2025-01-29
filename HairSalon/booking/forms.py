@@ -1,6 +1,5 @@
 from django import forms
 from .models import Booking
-
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
@@ -72,3 +71,4 @@ class BookingForm(forms.ModelForm):
                 'required': 'Vui lòng chọn ít nhất một dịch vụ.'
             }
         }
+    
