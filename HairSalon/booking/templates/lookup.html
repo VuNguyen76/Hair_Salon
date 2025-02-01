@@ -1,0 +1,45 @@
+{% extends "base_booking.html" %} {% load static %} {% block content %}
+
+<!-- Form Tra cứu -->
+<form method="POST">
+  {% csrf_token %} {{ form.non_field_errors }}
+
+  <div class="form-group">{{ form.phone_number }}</div>
+
+  <button type="submit">Tra cứu</button>
+</form>
+{% endblock %} {% block lookup %} {%if lookup%}
+<section>
+  <div class="quan-ly-dat-lich">
+    <h2>Lịch Đặt Của Bạn</h2>
+    <table>
+      <tr>
+        <th>Họ và Tên</th>
+        <th>Số điện thoại</th>
+        <th>Chi nhánh</th>
+        <th>Dịch vụ</th>
+        <th>Lời nhắn</th>
+        <th>Ngày đặt lịch</th>
+        <th>Giờ đặt lịch</th>
+      </tr>
+      {% if bookings %} {% for booking in bookings %}
+      <tr>
+        <td>{{ booking.full_name }}</td>
+        <td>{{ booking.phone_number }}</td>
+        <td>{{ booking.branch }}</td>
+        <td>{{ booking.service|join:", " }}</td>
+        <td>{{ booking.message }}</td>
+        <td>{{ booking.booking_date }}</td>
+        <td>{{ booking.booking_time }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="7" style="text-align: center">
+          Không tìm thấy lịch hẹn nào với số điện thoại này.
+        </td>
+      </tr>
+      {% endif %}
+    </table>
+  </div>
+</section>
+{%endif%} {% endblock %}

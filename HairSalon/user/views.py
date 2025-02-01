@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import RegisterForm,LoginForm
 from .models import Infor
 from booking.models import Booking
+from booking.forms import LookupForm
 import ast
 
 def main(request):
@@ -64,3 +65,4 @@ def quan_ly_dat_lich(request):
     for booking in bookings:
         booking.service = convert_to_list(booking.service)
     return render(request, 'quan-ly-dat-lich.html', {'bookings': bookings})
+

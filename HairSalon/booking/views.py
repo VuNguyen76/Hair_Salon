@@ -1,59 +1,9 @@
-# from django.shortcuts import render, redirect
-# from django.contrib import messages
-# from .forms import BookingForm
-# from .models import Booking, Guest_Booking
 
-# def booking_view(request):
-#     if request.method == 'POST':
-#         form = BookingForm(request.POST)
-        
-#         if form.is_valid():
-#             # Lấy dữ liệu từ form
-#             name = form.cleaned_data.get('name')
-#             phone = form.cleaned_data.get('phone')
-#             gender = form.cleaned_data.get('gender')
-#             branch = form.cleaned_data.get('branch')
-#             service = form.cleaned_data.get('service')
-#             message = form.cleaned_data.get('message')
-#             booking_date = form.cleaned_data.get('booking_date')
-#             booking_time = form.cleaned_data.get('booking_time')
-            
-#             if request.user.is_authenticated:  # Nếu người dùng đã đăng nhập
-#                 # Lưu vào bảng Booking (dành cho người dùng đã đăng nhập)
-#                 booking = Booking.objects.create(
-#                     user=request.user,
-#                     phone=phone,
-#                     branch=branch,
-#                     service=service,
-#                     message=message,
-#                     booking_date=booking_date,
-#                     booking_time=booking_time,
-#                 )
-#                 messages.success(request, 'Đặt lịch thành công!')  # Thông báo thành công
-#                 return redirect('booking')  # Redirect đến trang quản lý lịch hẹn của người dùng
-
-#             else:  # Nếu người dùng chưa đăng nhập (khách)
-#                 # Lưu vào bảng GuestBooking (dành cho khách)
-#                 guest_booking = Guest_Booking.objects.create(
-#                     guest_phone=phone,
-#                     name=name,
-#                     gender=gender,
-#                     branch=branch,
-#                     service=service,
-#                     message=message,
-#                     booking_date=booking_date,
-#                     booking_time=booking_time,
-#                 )
-#                 messages.success(request, 'Đặt lịch thành công!')  # Thông báo thành công
-#                 return redirect('booking')  # Redirect đến trang dành cho khách chưa đăng nhập
-
-#     else:
-#         form = BookingForm()
-
-#     return render(request, 'booking.html', {'form': form})
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import BookingForm
+from .forms import BookingForm, LookupForm
+from .models import Booking 
+import ast
 
 def booking_view(request):
     if request.method == 'POST':
@@ -71,4 +21,24 @@ def booking_view(request):
         form = BookingForm()
     
     return render(request, 'booking.html', {'form': form})
+
+def convert_to_list(string):
+    try:
+        return ast.literal_eval(string)
+    except (ValueError, SyntaxError):
+        return [string]
+
+def lookup_view(request):
+    form_lookup = LookupForm()
+    bookings = None
+    lookup=False
+    if request.method == "POST":
+        form_lookup = LookupForm(request.POST)
+        if form_lookup.is_valid():
+            phone_number = form_lookup.cleaned_data["phone_number"]
+            bookings = Booking.objects.filter(phone_number=phone_number)
+            for booking in bookings:
+                booking.service = convert_to_list(booking.service)
+            lookup=True
+    return render(request, "lookup.html", {"form": form_lookup, "bookings": bookings, "lookup": lookup})
 

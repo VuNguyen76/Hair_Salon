@@ -71,4 +71,8 @@ class BookingForm(forms.ModelForm):
                 'required': 'Vui lòng chọn ít nhất một dịch vụ.'
             }
         }
-    
+class LookupForm(forms.Form):
+    phone_number = forms.CharField(
+        max_length=15,
+        widget=forms.TextInput(attrs={'class': 'formInput', 'placeholder': 'Nhập số điện thoại'})
+    )

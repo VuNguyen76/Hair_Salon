@@ -1,154 +1,62 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Sen:wght@400..800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="shortcut icon"
-      href="{% static 'booking/img/favicon.png' %}"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <link rel="stylesheet" href="{% static 'booking/css/booking.css' %}" />
+{% extends "base_booking.html" %} {% load static %} {% block content %}
+<!-- Form Đặt lịch -->
+<form method="POST">
+  {% csrf_token %} {{ form.non_field_errors }}
 
-    <title>Booking</title>
-  </head>
-  <body>
-    <div class="booking">
-      <div class="container row_booking">
-        <div class="booking_heading">
-          <a href="/">
-            <img
-              src="{% static 'booking/img/LOGO.png' %}"
-              alt="logo"
-              class="logo"
-            />
-          </a>
-        </div>
-        <div class="booking_form">
-          <form method="POST">
-            {% csrf_token %} {{ form.non_field_errors }}
+  <div class="form-group">
+    {{ form.phone_number }} {{ form.phone_number.errors }}
+  </div>
 
-            <div class="form-group">
-              {{ form.phone_number }} {{ form.phone_number.errors }}
-            </div>
+  <div class="form-group">{{ form.full_name }} {{ form.full_name.errors }}</div>
 
-            <div class="form-group">
-              {{ form.full_name }} {{ form.full_name.errors }}
-            </div>
+  <div class="form-group">{{ form.gender }} {{ form.gender.errors }}</div>
 
-            <div class="form-group">
-              {{ form.gender }} {{ form.gender.errors }}
-            </div>
+  <div class="form-group">{{ form.branch }} {{ form.branch.errors }}</div>
 
-            <div class="form-group">
-              {{ form.branch }} {{ form.branch.errors }}
-            </div>
+  <div class="form-group">
+    {{ form.booking_date }} {{ form.booking_date.errors }}
+  </div>
 
-            <div class="form-group">
-              {{ form.booking_date }} {{ form.booking_date.errors }}
-            </div>
+  <div class="form-group">
+    {{ form.booking_time }} {{ form.booking_time.errors }}
+  </div>
 
-            <div class="form-group">
-              {{ form.booking_time }} {{ form.booking_time.errors }}
-            </div>
-
-            <div class="form-group">
-              <label
-                class="label-service"
-                style="display: inline-block; margin-bottom: 10px"
-                for="service"
-                >Chọn dịch vụ</label
-              >
-              <div class="service hidden">
-                {% for checkbox in form.service %}
-                <div style="display: flex" class="checkbox">
-                  <label
-                    for="{{ checkbox.id_for_label }}"
-                    style="min-width: 90%"
-                  >
-                    {{ checkbox.choice_label }}
-                  </label>
-                  {{ checkbox.tag }}
-                </div>
-                {% endfor %}
-              </div>
-
-              {{ form.service.errors }}
-            </div>
-
-            <div class="form-group">
-              {{ form.message }} {{ form.message.errors }}
-            </div>
-            <p>
-              Bạn có thể
-              <a style="color: #dd1956" href="/login">Đăng nhập</a> để quản lý
-              thông tin đặt lịch
-            </p>
-            <p>
-              Hoặc tra cứu cuộc hẹn đã đạt bằng cách ấn
-              <span style="color: #dd1956; cursor: pointer">Tra cứu </span>
-            </p>
-            <button
-              style="margin-left: 90px"
-              type="submit"
-              class="btn btn-primary"
-            >
-              Đặt lịch
-            </button>
-          </form>
-        </div>
+  <div class="form-group">
+    <label
+      class="label-service"
+      style="display: inline-block; margin-bottom: 10px; text-align: left;"
+      for="service"
+      >Chọn dịch vụ</label
+    >
+    <div class="service hidden">
+      {% for checkbox in form.service %}
+      <div style="display: flex" class="checkbox">
+        <label for="{{ checkbox.id_for_label }}" style="min-width: 90%"
+          >{{ checkbox.choice_label }}</label
+        >
+        {{ checkbox.tag }}
       </div>
+      {% endfor %}
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="{% static 'booking/js/booking.js' %}"></script>
+    {{ form.service.errors }}
+  </div>
 
-    <script>
-            {% comment %} document.addEventListener("DOMContentLoaded", function () {
-              console.log(123);
-              Toastify({
-                text: "Đặt lịch thành công!",
-                duration: 3000,
-                gravity: "top", // "top" hoặc "bottom"
-                position: "right", // "left", "center", hoặc "right"
-                background: " linear-gradient(135deg, #6dbf6b, #28a745)",
-                stopOnFocus: true, // Dừng thông báo khi di chuột vào
-              }).showToast();
-            }); {% endcomment %}
-        document.addEventListener("DOMContentLoaded", function () {
-          {% if messages %}
-            {% for message in messages %}
-              Toastify({
-                text: "Đặt lịch thành công!",
-                close:true,
-                duration: 3000,
-                "hideDuration": "2000",
-                gravity: "top",
-                position: "center",
-                stopOnFocus: true,
-                style: {
-                whiteSpace: "pre-line"
-      }
-              }).showToast();
-            {% endfor %}
+  <div class="form-group">{{ form.message }} {{ form.message.errors }}</div>
 
-          {% endif %}
-        });
-    </script>
-  </body>
-</html>
+  {% if user.is_authenticated %}
+  <div></div>
+  {% else %}
+  <p>
+    Bạn có thể
+    <a style="color: #dd1956" href="/login">Đăng nhập</a> để quản lý thông tin
+    đặt lịch
+  </p>
+  <p>
+    Hoặc tra cứu cuộc hẹn đã đặt bằng cách ấn
+    <a style="color: #dd1956" href="/lookup">Tra cứu</a>
+  </p>
+  {% endif %}
+  <button type="submit" class="btn btn-primary">Đặt lịch</button>
+</form>
+
+{% endblock %}
