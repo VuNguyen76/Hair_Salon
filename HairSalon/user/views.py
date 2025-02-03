@@ -54,15 +54,8 @@ def logout_view(request):
 def staff(request):
     return render(request, 'staff.html')
 
-def convert_to_list(string):
-    try:
-        return ast.literal_eval(string)
-    except (ValueError, SyntaxError):
-        return [string]
 
 def quan_ly_dat_lich(request):
     bookings = Booking.objects.filter(user=request.user)
-    for booking in bookings:
-        booking.service = convert_to_list(booking.service)
     return render(request, 'quan-ly-dat-lich.html', {'bookings': bookings})
 

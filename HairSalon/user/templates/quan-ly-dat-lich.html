@@ -19,20 +19,22 @@
                 <th>Lời nhắn</th>
                 <th>Ngày đặt lịch</th>
                 <th>Giờ đặt lịch</th>
+                <th>Tổng chi phí</th>
               </tr>
               {% for booking in bookings %}
               <tr>
                 <td>{{ booking.full_name }}</td>
                 <td>{{ booking.phone_number }}</td>
                 <td>{{ booking.branch }}</td>
-                <td>{{ booking.service|join:", " }}</td>
+                <td>{{ booking.services.all|join:", " }}</td>
                 <td>{{ booking.message }}</td>
                 <td>{{ booking.booking_date }}</td>
                 <td>{{ booking.booking_time }}</td>
+                <td>{{ booking.total_price }}</td>
               </tr>
               {% empty %}
               <tr>
-                <td style="text-align:center;" colspan="7">Bạn chưa có lịch đặt nào.</td>
+                <td style="text-align:center;" colspan="8">Bạn chưa có lịch đặt nào.</td>
               </tr>
               {% endfor %}
             </table>

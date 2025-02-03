@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/staff/staff.css' %}" />
+    <title>Staff Dashboard - CN Salon</title>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>CN Salon Staff</h2>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li class="active"><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#appointments">Lịch Hẹn</a></li>
+          <li><a href="#profile">Tài khoản</a></li>
+          <li><a href="#reports">Báo Cáo</a></li>
+          <li><a href="#logout">Đăng xuất</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <h1>CN Salon</h1>
+        <div class="user-info">
+          <p>Xin chào, <strong>Nhân viên</strong></p>
+          <img src="https://via.placeholder.com/40" alt="User Avatar" />
+        </div>
+      </header>
+
+      <!-- Statistics Section -->
+      <section class="stats">
+        <div class="stat-card">
+          <h2>Đã hoàn thành</h2>
+          <p>120</p>
+        </div>
+        <div class="stat-card">
+          <h2>Đang chờ</h2>
+          <p>30</p>
+        </div>
+        <div class="stat-card">
+          <h2>Đã hủy</h2>
+          <p>5</p>
+        </div>
+      </section>
+
+      <!-- Appointments Section -->
+      <section class="appointments" id="appointments">
+        <h2>Danh sách Lịch Hẹn</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Khách hàng</th>
+              <th>Ngày Giờ</th>
+              <th>Dịch Vụ</th>
+              <th>Trạng Thái</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Nguyễn Thị Mai</td>
+              <td>12/02/2025 10:00</td>
+              <td>Cắt tóc</td>
+              <td><span class="status completed">Hoàn thành</span></td>
+              <td><button class="btn">Chi tiết</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Trần Quốc Anh</td>
+              <td>12/02/2025 11:30</td>
+              <td>Gội đầu</td>
+              <td><span class="status pending">Chờ</span></td>
+              <td><button class="btn">Chi tiết</button></td>
+            </tr>
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Reports Section -->
+      <section class="reports" id="reports">
+        <h2>Báo cáo</h2>
+        <p>Chi tiết các báo cáo tài chính và số liệu dịch vụ.</p>
+      </section>
+    </main>
+  </body>
+</html>

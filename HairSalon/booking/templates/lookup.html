@@ -21,6 +21,7 @@
         <th>Lời nhắn</th>
         <th>Ngày đặt lịch</th>
         <th>Giờ đặt lịch</th>
+        <th>Tổng giá</th>
       </tr>
       {% if bookings %} {% for booking in bookings %}
       <tr>
@@ -31,10 +32,11 @@
         <td>{{ booking.message }}</td>
         <td>{{ booking.booking_date }}</td>
         <td>{{ booking.booking_time }}</td>
+        <td>{{ booking.total_price }}</td>
       </tr>
       {% endfor %} {% else %}
       <tr>
-        <td colspan="7" style="text-align: center">
+        <td colspan="8" style="text-align: center">
           Không tìm thấy lịch hẹn nào với số điện thoại này.
         </td>
       </tr>

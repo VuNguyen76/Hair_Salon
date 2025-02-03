@@ -53,25 +53,27 @@
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{% static 'booking/js/booking.js' %}"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          {% if messages %}
-            {% for message in messages %}
-              Toastify({
-                text: "Đặt lịch thành công!",
-                close:true,
-                duration: 3000,
-                "hideDuration": "2000",
-                gravity: "top",
-                position: "center",
-                stopOnFocus: true,
-                style: {
-                whiteSpace: "pre-line"
-      }
-              }).showToast();
-            {% endfor %}
+      document.addEventListener("DOMContentLoaded", function () {
+        {% if messages %}
+          {% for message in messages %}
+            Toastify({
+              text: "Đặt lịch thành công!",
+              close:true,
+              duration: 3000,
+              "hideDuration": "2000",
+              gravity: "top",
+              position: "center",
+              stopOnFocus: true,
+              style: {
+              whiteSpace: "pre-line"
+              }
+            }).showToast();
+          {% endfor %}
 
-          {% endif %}
-        });
+        {% endif %}
+      });
+
+      document.body.style.zoom = "125%"
     </script>
   </body>
 </html>

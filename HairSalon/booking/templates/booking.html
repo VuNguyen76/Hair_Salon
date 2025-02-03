@@ -24,12 +24,12 @@
   <div class="form-group">
     <label
       class="label-service"
-      style="display: inline-block; margin-bottom: 10px; text-align: left;"
+      style="display: inline-block; margin-bottom: 10px; text-align: left"
       for="service"
       >Chọn dịch vụ</label
     >
     <div class="service hidden">
-      {% for checkbox in form.service %}
+      {% for checkbox in form.services %}
       <div style="display: flex" class="checkbox">
         <label for="{{ checkbox.id_for_label }}" style="min-width: 90%"
           >{{ checkbox.choice_label }}</label
@@ -43,6 +43,7 @@
 
   <div class="form-group">{{ form.message }} {{ form.message.errors }}</div>
 
+  <button type="submit" class="btn btn-primary">Đặt lịch</button>
   {% if user.is_authenticated %}
   <div></div>
   {% else %}
@@ -56,7 +57,6 @@
     <a style="color: #dd1956" href="/lookup">Tra cứu</a>
   </p>
   {% endif %}
-  <button type="submit" class="btn btn-primary">Đặt lịch</button>
 </form>
 
 {% endblock %}

@@ -5,7 +5,7 @@ class BookingForm(forms.ModelForm):
         model = Booking
         fields = [
             'phone_number', 'full_name', 'gender', 
-            'branch', 'service', 'message', 
+            'branch', 'services', 'message', 
             'booking_date', 'booking_time'
         ]
         widgets = {
@@ -18,16 +18,7 @@ class BookingForm(forms.ModelForm):
                 ('Đà nẵng', 'CN Hair Salon 85 Đ. Trần Cao Vân, Hội An, Quảng Nam'),
                 ('HCM', 'CN Hair Salon 189 Trung Mỹ Tây, Tô Ký, Q.12, TP.HCM')
             ]),
-            'service': forms.CheckboxSelectMultiple(attrs={'class': 'formInput'}, choices=[
-                ('Uốn Nối', 'Uốn nối tóc'),
-                ('Uốn basic', 'Uốn basic'),
-                ('Duỗi tạo kiểu', 'Duỗi tạo kiểu'),
-                ('Combo Nhuộm', 'Combo nhuộm'),
-                ('Combo cắt gội', 'Combo cắt gội'),
-                ('Combo Gội massage', 'Combo Gội massage'),
-                ('Kid', 'Combo trẻ em'),
-                ('Chăm sóc da', 'Combo chăm sóc da cấp thiết UltraWhite')
-            ]),
+            'services': forms.CheckboxSelectMultiple(attrs={'class': 'formInput'}),
             'message': forms.Textarea(attrs={'class': 'formTextarea', 'placeholder': 'Lời nhắn...', 'rows': 5}),
             'booking_date': forms.Select(attrs={'class': 'formInput'}, choices=[
                 ('','Chọn ngày đặt lịch'),
