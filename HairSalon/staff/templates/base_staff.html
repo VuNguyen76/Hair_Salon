@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'staff/css/staff.css' %}" />
+    <title>Staff Dashboard - CN Salon</title>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>CN Salon Staff</h2>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li class="active"><a href="/staff">Dashboard</a></li>
+          <li><a href="/staff_booking/">Lịch Hẹn</a></li>
+          <li><a href="#">Tài khoản</a></li>
+          <li><a href="#">Báo Cáo</a></li>
+          <li><a href="#">Đăng xuất</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <h1>CN Salon</h1>
+        <div class="user-info">
+          {% if user.is_authenticated %}
+            {% if user.is_staff or user.is_superuser %}
+              <p>Xin chào, <strong>{{ user.username }}</strong></p>
+              <a href="{% url 'logout' %}">Đăng xuất</a>
+            {% else %}
+              <p>Xin chào, bạn không có quyền truy cập vào trang này.</p>
+            {% endif %}
+          {% else %}
+            <form method="POST" action="{% url 'login' %}">
+              {% csrf_token %}
+              <label for="username">Tên đăng nhập</label>
+              <input type="text" name="username" id="username" required />
+              <label for="password">Mật khẩu</label>
+              <input type="password" name="password" id="password" required />
+              <button type="submit">Đăng nhập</button>
+            </form>
+          {% endif %}
+        </div>
+      </header>
+      {% block content %}{% endblock %}
+    </main>
+    <script src="{% static 'staff/js/staff.js' %}"></script>
+  </body>
+</html>

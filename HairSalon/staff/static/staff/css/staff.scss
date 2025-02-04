@@ -1,16 +1,3 @@
-// Biến màu sắc
-$primary-color: #2c3e50;
-$secondary-color: #34495e;
-$highlight-color: #1abc9c;
-$background-color: #ecf0f1;
-$white: white;
-$dark-gray: #16a085;
-$light-gray: #f9f9f9;
-$button-hover: #f1f1f1;
-$button-active: #3498db;
-$button-delete: #e74c3c;
-$shadow: rgba(0, 0, 0, 0.1);
-
 // Reset Styles
 * {
   margin: 0;
@@ -23,6 +10,16 @@ body {
   color: #333;
   display: flex;
 }
+
+// Color Variables
+$primary-color: #2c3e50;
+$secondary-color: #34495e;
+$highlight-color: #1abc9c;
+$background-color: #ecf0f1;
+$white: white;
+$dark-gray: #16a085;
+$light-gray: #f9f9f9;
+$shadow: rgba(0, 0, 0, 0.1);
 
 // Sidebar Styles
 .sidebar {
@@ -60,6 +57,10 @@ body {
       &:hover {
         background-color: $highlight-color;
       }
+
+      a:hover {
+        color: $white;
+      }
     }
   }
 }
@@ -69,25 +70,25 @@ body {
   flex-grow: 1;
   padding: 20px;
   background-color: $background-color;
+}
 
-  .header {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .user-info {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
 
-    h1 {
-      font-size: 2em;
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-
-      img {
-        border-radius: 50%;
-        margin-left: 10px;
-      }
+    img {
+      border-radius: 50%;
+      margin-left: 10px;
     }
   }
 }
@@ -119,8 +120,8 @@ body {
   }
 }
 
-// Employees Table
-.employees {
+// Appointments Table
+.appointments {
   table {
     width: 100%;
     border-collapse: collapse;
@@ -146,25 +147,7 @@ body {
     }
 
     tr:hover {
-      background-color: $button-hover;
+      background-color: #f1f1f1;
     }
-  }
-}
-
-// Button Styles
-button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &.edit-btn {
-    background-color: $button-active;
-    color: $white;
-  }
-
-  &.delete-btn {
-    background-color: $button-delete;
-    color: $white;
   }
 }

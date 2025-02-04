@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -32,6 +34,8 @@ def register(request):
         form = RegisterForm()
 
     return render(request, 'register.html', {'form': form})
+
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -41,12 +45,24 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')  # Chuyển hướng đến trang chủ
+                # Kiểm tra quyền của người dùng và chuyển hướng đến trang phù hợp
+                if user.is_staff:
+                    if user.is_superuser:
+                        # Nếu là admin, chuyển hướng đến trang quản lý
+                        return redirect('manage')
+                    else:
+                        # Nếu là staff, chuyển hướng đến trang staff dashboard
+                        return redirect('staff')
+                else:
+                    # Nếu là user (không phải staff hoặc admin), chuyển hướng đến trang chủ
+                    return redirect('/')
             else:
                 messages.error(request, "Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu.")
+        else:
+            messages.error(request, "Thông tin đăng nhập không hợp lệ.")
     else:
         form = LoginForm()
-    
+
     return render(request, 'login.html', {'form': form})
 def logout_view(request):
     logout(request)
@@ -58,4 +74,9 @@ def staff(request):
 def quan_ly_dat_lich(request):
     bookings = Booking.objects.filter(user=request.user)
     return render(request, 'quan-ly-dat-lich.html', {'bookings': bookings})
+def staff_dashboard(request):
+    return render(request, 'staff_dashboard.html')
+def manage_dashboard(request):
+    return render(request, 'manage_dashboard.html')
+
 
