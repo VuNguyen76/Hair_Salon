@@ -1,0 +1,36 @@
+{% extends "base_staff.html" %} {% load static %} {% block content %}
+<!-- Booking Details Section -->
+<section class="booking-details">
+  <h2>Danh sách Lịch Hẹn</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <table>
+      <thead>
+        <tr>
+          <th>Khách hàng</th>
+          <th>Ngày Giờ</th>
+          <th>Dịch Vụ</th>
+          <th>Trạng Thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for booking in bookings %}
+        <tr>
+          <td>{{ booking.full_name }}</td>
+          <td>{{ booking.booking_date }} {{ booking.booking_time }}</td>
+          <td>{{ booking.services.all|join:", " }}</td>
+          <td>
+            <select name="status_{{ booking.id }}" class="status-update">
+              <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Chờ</option>
+              <option value="in_progress" {% if booking.status == 'in_progress' %}selected{% endif %}>Đang thực hiện</option>
+              <option value="completed" {% if booking.status == 'completed' %}selected{% endif %}>Hoàn thành</option>
+            </select>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <button type="submit" class="btn">Xác nhận</button>
+  </form>
+</section>
+{% endblock %}

@@ -23,13 +23,6 @@ def booking_view(request):
     
     return render(request, 'booking.html', {'form': form})
 
-
-def convert_to_list(string):
-    try:
-        return ast.literal_eval(string)
-    except (ValueError, SyntaxError):
-        return [string]
-
 def lookup_view(request):
     form_lookup = LookupForm()
     bookings = None

@@ -8,6 +8,13 @@ class Service(models.Model):
         return self.name
 
 class Booking(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Chờ xử lý'),
+        ('in_progress', 'Đang thực hiện'),
+        ('completed', 'Hoàn thành'),
+    ]
+    revenue = models.DecimalField(max_digits=10, decimal_places=2, default=0.0) #Doanh thu
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')#Trạng thái
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     phone_number = models.CharField(max_length=15)  # Số điện thoại khách hàng
     full_name = models.CharField(max_length=100)  # Họ và tên khách hàng
