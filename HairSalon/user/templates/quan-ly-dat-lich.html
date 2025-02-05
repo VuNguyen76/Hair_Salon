@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block style %}
   {%static 'css/quan-ly-dat-lich/quan-ly-dat-lich.css'%}
@@ -29,7 +30,7 @@
                 <td>{{ booking.message }}</td>
                 <td>{{ booking.booking_date }}</td>
                 <td>{{ booking.booking_time }}</td>
-                <td>{{ booking.total_price }}</td>
+                <td>{{ booking.total_price|floatformat:0|intcomma }}</td>
               </tr>
               {% empty %}
               <tr>
