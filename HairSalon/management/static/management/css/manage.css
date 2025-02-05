@@ -37,8 +37,7 @@ body {
   color: white;
   display: block;
 }
-.sidebar .menu li.active,
-.sidebar .menu li:hover {
+.sidebar .menu li.active, .sidebar .menu li:hover {
   background-color: #1abc9c;
 }
 
