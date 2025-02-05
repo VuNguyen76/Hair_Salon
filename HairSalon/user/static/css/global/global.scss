@@ -75,6 +75,16 @@ header {
     .btn_booking {
       margin: 0 60px;
     }
+    .point {
+      display: flex;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(251, 255, 2);
+      font-size: 3rem;
+      i {
+        margin: 0 5px;
+      }
+    }
     .user {
       min-width: 60px;
       height: 60px;

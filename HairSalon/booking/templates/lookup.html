@@ -1,4 +1,6 @@
-{% extends "base_booking.html" %} {% load static %} {% block content %}
+{% extends "base_booking.html" %} {% load static %} 
+{% load humanize %} 
+{% block content %}
 
 <!-- Form Tra cứu -->
 <form method="POST">
@@ -32,7 +34,7 @@
         <td>{{ booking.message }}</td>
         <td>{{ booking.booking_date }}</td>
         <td>{{ booking.booking_time }}</td>
-        <td>{{ booking.total_price }}</td>
+        <td>{{ booking.total_price|floatformat:0|intcomma }}</td>
       </tr>
       {% endfor %} {% else %}
       <tr>

@@ -1,19 +1,17 @@
-{% extends "base_staff.html" %}
-{% load static %}
-{% block content %}
+{% extends "base_staff.html" %} {% load static %} {% block content %}
 <!-- Statistics Section -->
 <section class="stats">
   <div class="stat-card">
     <h2>Đã hoàn thành</h2>
-    <p>{{ completed_count }}</p>
+    <p>120</p>
   </div>
   <div class="stat-card">
     <h2>Đang chờ</h2>
-    <p>{{ pending_count }}</p>
+    <p>30</p>
   </div>
   <div class="stat-card">
     <h2>Đã hủy</h2>
-    <p>{{ canceled_count }}</p>
+    <p>5</p>
   </div>
 </section>
 
@@ -71,4 +69,5 @@
     </span>
   </div>
 </section>
+
 {% endblock %}
