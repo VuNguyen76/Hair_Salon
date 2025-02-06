@@ -4,6 +4,7 @@ class Service(models.Model):
     name = models.CharField(max_length=255)  # Tên dịch vụ
     price = models.DecimalField(max_digits=10, decimal_places=2)  # Giá dịch vụ
     image = models.ImageField(upload_to='service_images/', blank=True, null=True)  # Hình ảnh dịch vụ
+    description = models.TextField(blank=True, null=True)  # Mô tả dịch vụ
 
     def __str__(self):
         return self.name

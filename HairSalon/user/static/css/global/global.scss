@@ -42,7 +42,23 @@ button {
 .hidden {
   display: none !important;
 }
-
+.rectangle {
+  display: inline-block;
+  width: 8px;
+  height: 50px;
+  background-color: white;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+.heading {
+  font-family: $font-second;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 90px;
+  display: flex;
+  align-items: center;
+}
 header {
   background-color: black;
   margin-bottom: 20px;

@@ -1,22 +1,3 @@
-.rectangle {
-  display: inline-block;
-  width: 8px;
-  height: 50px;
-  background-color: white;
-  border-radius: 10px;
-  margin-right: 15px;
-}
-
-.heading {
-  font-family: "monospace", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 90px;
-  display: flex;
-  align-items: center;
-}
-
 .introduce .row_introduce {
   display: flex;
   gap: 100px;

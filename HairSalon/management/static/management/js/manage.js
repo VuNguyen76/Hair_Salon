@@ -1,31 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   const menuItems = document.querySelectorAll(".menu li");
-  let currentPath = window.location.pathname; // Lấy URL hiện tại của trang
-
-  // Loại bỏ dấu chéo cuối nếu có
-  if (currentPath.endsWith("/")) {
-    currentPath = currentPath.slice(0, -1);
-  }
+  const currentPath = window.location.pathname.replace(/\/$/, ""); // Xóa dấu '/' cuối cùng nếu có
 
   menuItems.forEach((item) => {
     const link = item.querySelector("a");
-    let linkHref = link.getAttribute("href");
+    if (!link) return; // Nếu không có thẻ <a>, bỏ qua
 
-    if (linkHref.endsWith("/")) {
-      linkHref = linkHref.slice(0, -1);
-    }
+    const linkHref = link.getAttribute("href").replace(/\/$/, ""); // Xóa dấu '/' cuối cùng nếu có
 
-    if (currentPath.startsWith(linkHref)) {
+    // Kiểm tra đường dẫn phải khớp chính xác với đường dẫn hiện tại
+    if (currentPath === linkHref) {
       item.classList.add("active");
     } else {
       item.classList.remove("active");
     }
-  });
-
-  menuItems.forEach((item) => {
-    item.addEventListener("click", function () {
-      menuItems.forEach((i) => i.classList.remove("active"));
-      item.classList.add("active");
-    });
   });
 });

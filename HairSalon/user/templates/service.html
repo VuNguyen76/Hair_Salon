@@ -1,0 +1,109 @@
+{% extends "base.html" %} {%load static%} {% load humanize %}
+
+<div></div>
+{% block style %} {%static 'css/service/service.css'%} {% endblock %}
+<div></div>
+
+{% block content %}
+<section style="margin-top: 82px">
+  <div class="background-service">
+    <div class="desc">
+      <p style="max-width: 900px">
+        <span class="desc-title">CN HAIR SALON</span>
+        <br />
+        Chúng tôi cung cấp dịch vụ cắt, uốn, nhuộm và duỗi tóc chuyên nghiệp,
+        giúp bạn có mái tóc đẹp và khỏe mạnh. Đặt lịch ngay để trải nghiệm!
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Thanh tìm kiếm -->
+<section>
+  <div class="search">
+    <div class="container">
+      <div class="row-search">
+        <i style="color: black" class="fa-solid fa-magnifying-glass"></i>
+        <form class="form-search" method="GET">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Tìm kiếm dịch vụ..."
+            value="{{ query }}"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Kết quả tìm kiếm (Chỉ hiển thị khi có từ khóa tìm kiếm) -->
+{% if query %}
+<section class="search-results">
+  <div class="container">
+    <h1 class="heading">
+      <span class="rectangle"></span>
+      KẾT QUẢ TÌM KIẾM CỦA: "{{ query }}"
+    </h1>
+    <div class="service-list">
+      {% for service in search_results %}
+      <div class="service-item highlight">
+        <img
+          src="{{ service.image.url }}"
+          alt="{{ service.name }}"
+          class="service-img"
+        />
+        <div class="service-infor">
+          <h3 class="service-name">{{ service.name }}</h3>
+          <p class="desc">{{ service.description }}</p>
+          <div class="service-price">
+            <span style="font-size: 1.7rem">Giá dịch vụ</span> <br />
+            <span>{{ service.price|floatformat:0|intcomma }} VNĐ</span>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p style="font-size:3rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Không tìm thấy dịch vụ nào.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Danh sách tất cả dịch vụ (luôn hiển thị) -->
+<section>
+  <div class="service">
+    <div class="container">
+      <h1 class="heading">
+        <span class="rectangle"></span>
+        DỊCH VỤ CỦA CHÚNG TÔI
+      </h1>
+      <div class="service-list">
+        {% for service in all_services %}
+        <div class="service-item">
+          <img
+            src="{{ service.image.url }}"
+            alt="{{ service.name }}"
+            class="service-img"
+          />
+          <div class="service-infor">
+            <h3 class="service-name">{{ service.name }}</h3>
+            <p class="desc">{{ service.description }}</p>
+            <div class="service-price">
+              <span style="font-size: 1.7rem">Giá dịch vụ</span> <br />
+              <span>{{ service.price|floatformat:0|intcomma }} VNĐ</span>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p>Hiện tại chưa có dịch vụ nào.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %} {%block script%}
+<script type="module" src="{%static 'js/main.js'%}"></script>
+{% endblock %}

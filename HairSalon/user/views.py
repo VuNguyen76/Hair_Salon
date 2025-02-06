@@ -1,20 +1,31 @@
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegisterForm,LoginForm
 from .models import Infor
-from booking.models import Booking
-from booking.forms import LookupForm
-import ast
+from booking.models import Booking, Service
+from management.forms import ServiceForm
 
 def main(request):
     return render(request, 'main.html')
 
 def about(request):
     return render(request, 'about.html')
+def service(request):
+    query = request.GET.get('search', '')  # Lấy từ khóa tìm kiếm từ URL
 
+    if query:
+        search_results = Service.objects.filter(name__icontains=query)  # Kết quả tìm kiếm
+    else:
+        search_results = []  # Nếu không tìm kiếm, không hiển thị kết quả nào
+
+    all_services = Service.objects.all()  # Danh sách tất cả dịch vụ
+
+    return render(request, 'service.html', {
+        'search_results': search_results,
+        'all_services': all_services,
+        'query': query,  # Truyền từ khóa tìm kiếm vào template
+    })
 def manage(request):
     return render(request, 'manage.html')
 def register(request):

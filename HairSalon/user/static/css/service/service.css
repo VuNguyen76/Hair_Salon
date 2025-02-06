@@ -1,0 +1,88 @@
+.background-service {
+  height: 700px;
+  background: url("../../img/service/background.jpg") no-repeat center/cover;
+  background-attachment: fixed;
+}
+.background-service .desc {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 2.5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.background-service .desc .desc-title {
+  display: block;
+  font-size: 10rem;
+  margin-bottom: 5px;
+}
+
+.search {
+  margin: 30px;
+}
+.search .container {
+  display: flex;
+  justify-content: center;
+}
+.search .row-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  border-radius: 999px;
+  padding: 0 10px;
+  background-color: white;
+  overflow: hidden;
+}
+.search .row-search .form-search {
+  width: 100%;
+}
+.search .row-search .form-search input {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+}
+
+.service-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.service-list .service-item {
+  width: 280px;
+  height: 500px;
+  border-radius: 20px;
+  background-color: white;
+  overflow: hidden;
+  margin: 10px;
+}
+.service-list .service-item .service-img {
+  width: 100%;
+}
+.service-list .service-item .service-infor {
+  text-align: left;
+  color: black;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+.service-list .service-item .service-infor .service-name {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.service-list .service-item .service-infor .desc {
+  margin: 10px 0;
+  height: 40px;
+}
+.service-list .service-item .service-infor .service-price {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 2px #555;
+}

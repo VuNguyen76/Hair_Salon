@@ -23,6 +23,11 @@
       required
     />
 
+    <label for="id_description">Mô tả Dịch vụ:</label>
+    <textarea name="description" id="id_description" rows="4">
+{{ form.description.value }}</textarea
+    >
+
     <label for="id_image">Hình ảnh Dịch vụ:</label>
     <input type="file" name="image" id="id_image" />
     {% if service.image %}
@@ -30,7 +35,9 @@
     <img src="{{ service.image.url }}" alt="{{ service.name }}" width="100" />
     {% endif %}
     <br />
-    <div style="text-align:center;"><button type="submit">Lưu thay đổi</button></div>
+    <div style="text-align: center">
+      <button type="submit">Lưu thay đổi</button>
+    </div>
   </form>
 </section>
 {% endblock %}

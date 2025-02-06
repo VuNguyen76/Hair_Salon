@@ -12,6 +12,9 @@
     <label for="id_price">Giá Dịch vụ:</label>
     <input type="number" name="price" id="id_price" step="0.01" required />
 
+    <label for="id_description">Mô tả Dịch vụ:</label>
+    <textarea name="description" id="id_description" rows="4"></textarea>
+
     <label for="id_image">Hình ảnh Dịch vụ:</label>
     <input type="file" name="image" id="id_image" accept="image/*" />
 
@@ -27,12 +30,13 @@
       <th>Tên Dịch vụ</th>
       <th>Giá</th>
       <th>Hình ảnh</th>
+      <th>Mô tả</th>
       <th>Hành động</th>
     </tr>
     {% for service in page_obj %}
     <tr>
       <td>{{ service.name }}</td>
-      <td>{{ service.price|floatformat:0|intcomma }}</td>
+      <td>{{ service.price|floatformat:0|intcomma }} VNĐ</td>
       <td>
         {% if service.image %}
         <img
@@ -43,6 +47,7 @@
         />
         {% else %} Chưa có ảnh {% endif %}
       </td>
+      <td>{{ service.description }}</td>
       <td>
         <a class="edit-btn" href="{% url 'edit_service' service.id %}">Sửa</a> |
         <a
@@ -55,6 +60,7 @@
     </tr>
     {% endfor %}
   </table>
+
   <div class="pagination">
     {% if page_obj.has_previous %}
     <a href="?page=1">Trang đầu</a>
