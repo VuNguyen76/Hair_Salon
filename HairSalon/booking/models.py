@@ -12,6 +12,7 @@ class Booking(models.Model):
         ('pending', 'Chờ xử lý'),
         ('in_progress', 'Đang thực hiện'),
         ('completed', 'Hoàn thành'),
+        ('canceled', 'Đã hủy'),  # Thêm trạng thái hủy
     ]
     revenue = models.DecimalField(max_digits=10, decimal_places=2, default=0.0) #Doanh thu
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')#Trạng thái

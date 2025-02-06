@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegisterForm,LoginForm
@@ -78,5 +78,21 @@ def staff_dashboard(request):
     return render(request, 'staff_dashboard.html')
 def manage_dashboard(request):
     return render(request, 'manage_dashboard.html')
+
+def cancel_booking_view(request, booking_id):
+    # Lấy booking theo ID
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    # Kiểm tra nếu người dùng có quyền hủy booking
+    if request.user.is_authenticated and (booking.user == request.user or request.user.is_staff):
+        booking.status = 'canceled'  # Cập nhật trạng thái thành 'canceled'
+        booking.save()
+
+        messages.success(request, f"Lịch hẹn của {booking.full_name} đã được hủy thành công.")
+    else:
+        messages.error(request, "Bạn không có quyền hủy lịch hẹn này.")
+
+    # Sau khi hủy, chuyển hướng về trang chi tiết lịch hẹn
+    return redirect('quan_ly_dat_lich')
 
 

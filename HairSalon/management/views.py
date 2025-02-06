@@ -8,3 +8,5 @@ def manage_dashboard(request):
     return render(request, 'manage_dashboard.html', {'completed_bookings': completed_bookings, 'total_revenue': total_revenue})
 def manage_service(request):
     egcye
+def manage_service(request):
+    egcye
