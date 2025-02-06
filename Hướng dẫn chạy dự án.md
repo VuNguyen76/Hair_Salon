@@ -9,6 +9,6 @@
 - Cài đặt thử viện requirement
   + pip install -r requirements.txt
 - Chạy chương trình
-python manage.py migrate 
-python manage.py runserver  # Chạy server
+  + python manage.py migrate
+  + python manage.py runserver 
 
