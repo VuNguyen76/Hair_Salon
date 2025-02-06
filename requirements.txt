@@ -1,0 +1,8 @@
+asgiref==3.8.1
+Django==5.1.5
+django-livereload-server==0.5.1
+mysqlclient==2.2.7
+pillow==11.1.0
+sqlparse==0.5.3
+tornado==6.4.2
+tzdata==2024.2
