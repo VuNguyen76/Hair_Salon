@@ -12,6 +12,9 @@
   <!-- Status Update Section -->
   <form method="POST" id="status-form">
     {% csrf_token %}
+    <label for="reward_points_used">Điểm thưởng sử dụng:</label>
+    <input type="number" name="reward_points_used" id="reward_points_used" min="0" step="0.01">
+    
     <label for="status">Trạng thái:</label>
     <select name="status" id="status" required>
       <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Chờ</option>
