@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from django.middleware.cache import FetchFromCacheMiddleware
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -139,3 +140,5 @@ AUTH_USER_MODEL = 'auth.User'
 
 CACHE_MIDDLEWARE_SECONDS = 0
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

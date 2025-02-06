@@ -6,7 +6,7 @@ from decimal import Decimal
 
 
 def staff(request):
-    bookings_list = Booking.objects.all().order_by('-booking_date')
+    bookings_list = Booking.objects.all().order_by('-id')
     paginator = Paginator(bookings_list, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -23,9 +23,6 @@ def staff(request):
         'canceled_count': canceled_count,
     }
     return render(request, 'staff_dashboard.html', context)
-from decimal import Decimal
-from django.shortcuts import render, get_object_or_404, redirect
-from booking.models import Booking
 
 def staff_booking_single(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)  # Lấy đơn đặt lịch theo ID

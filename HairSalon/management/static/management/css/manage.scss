@@ -29,10 +29,10 @@ body {
   width: 250px;
   background-color: $primary-color;
   color: $white;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-
+  position: fixed;
+  height: 100vh;
   .logo {
     text-align: center;
     padding: 20px 0;
@@ -69,7 +69,7 @@ body {
   flex-grow: 1;
   padding: 20px;
   background-color: $background-color;
-
+  margin-left: 250px;
   .header {
     display: flex;
     justify-content: space-between;
@@ -118,53 +118,113 @@ body {
     font-weight: bold;
   }
 }
+.delete-btn,
+.edit-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  font-size: 14px;
+  margin: 0 5px;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.delete-btn {
+  background-color: $button-delete;
+}
+.edit-btn {
+  background-color: $button-active;
+}
+// Employees Table & Manage Service Table
+.table-style {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px $shadow;
 
-// Employees Table
-.employees {
-  table {
+  th,
+  td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: $highlight-color;
+    color: $white;
+  }
+  .service_img {
+    height: 50px;
+  }
+  tr:nth-child(even) {
+    background-color: $light-gray;
+  }
+
+  tr:hover {
+    background-color: $button-hover;
+  }
+}
+
+.employees table,
+.service-list table {
+  @extend .table-style;
+}
+
+// Manage Service
+%card-style {
+  background: white;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-form {
+  @extend %card-style;
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+
+  input,
+  textarea {
     width: 100%;
-    border-collapse: collapse;
-    background-color: $white;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px $shadow;
+  }
 
-    th,
-    td {
-      padding: 15px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
+  button {
+    background: #1abc9c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
 
-    th {
-      background-color: $highlight-color;
-      color: $white;
-    }
-
-    tr:nth-child(even) {
-      background-color: $light-gray;
-    }
-
-    tr:hover {
-      background-color: $button-hover;
+    &:hover {
+      background: #16a085;
     }
   }
 }
 
-// Button Styles
-button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &.edit-btn {
-    background-color: $button-active;
-    color: $white;
-  }
-
-  &.delete-btn {
-    background-color: $button-delete;
-    color: $white;
+.service-list {
+  @extend %card-style;
+  h2 {
+    margin-bottom: 15px;
   }
 }

@@ -1,0 +1,36 @@
+{% extends 'base_manage.html' %} {% block content %}
+<h2>Chỉnh sửa Dịch vụ</h2>
+<section class="service-form">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="id_name">Tên Dịch vụ:</label>
+    <input
+      type="text"
+      name="name"
+      id="id_name"
+      value="{{ form.name.value }}"
+      required
+    />
+
+    <label for="id_price">Giá Dịch vụ:</label>
+    <input
+      type="number"
+      name="price"
+      id="id_price"
+      step="0.01"
+      value="{{ form.price.value }}"
+      required
+    />
+
+    <label for="id_image">Hình ảnh Dịch vụ:</label>
+    <input type="file" name="image" id="id_image" />
+    {% if service.image %}
+    <label>Hình ảnh hiện tại:</label>
+    <img src="{{ service.image.url }}" alt="{{ service.name }}" width="100" />
+    {% endif %}
+    <br />
+    <div style="text-align:center;"><button type="submit">Lưu thay đổi</button></div>
+  </form>
+</section>
+{% endblock %}

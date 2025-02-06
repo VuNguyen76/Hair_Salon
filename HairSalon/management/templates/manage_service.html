@@ -1,0 +1,75 @@
+{% extends 'base_manage.html' %} {% load humanize %} {% block content %}
+
+<div class="service-form">
+  <h2>Quản lý Dịch vụ</h2>
+
+  <!-- Form Thêm Dịch Vụ -->
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="id_name">Tên Dịch vụ:</label>
+    <input type="text" name="name" id="id_name" required />
+
+    <label for="id_price">Giá Dịch vụ:</label>
+    <input type="number" name="price" id="id_price" step="0.01" required />
+
+    <label for="id_image">Hình ảnh Dịch vụ:</label>
+    <input type="file" name="image" id="id_image" accept="image/*" />
+
+    <button type="submit">Thêm Dịch vụ</button>
+  </form>
+</div>
+
+<!-- Danh sách dịch vụ hiện có -->
+<section class="employees">
+  <h2>Danh sách Dịch vụ</h2>
+  <table border="1">
+    <tr>
+      <th>Tên Dịch vụ</th>
+      <th>Giá</th>
+      <th>Hình ảnh</th>
+      <th>Hành động</th>
+    </tr>
+    {% for service in page_obj %}
+    <tr>
+      <td>{{ service.name }}</td>
+      <td>{{ service.price|floatformat:0|intcomma }}</td>
+      <td>
+        {% if service.image %}
+        <img
+          class="service_img"
+          src="{{ service.image.url }}"
+          alt="{{ service.name }}"
+          width="100"
+        />
+        {% else %} Chưa có ảnh {% endif %}
+      </td>
+      <td>
+        <a class="edit-btn" href="{% url 'edit_service' service.id %}">Sửa</a> |
+        <a
+          class="delete-btn"
+          href="{% url 'delete_service' service.id %}"
+          onclick="return confirm('Bạn có chắc muốn xóa dịch vụ này?');"
+          >Xóa</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class="pagination">
+    {% if page_obj.has_previous %}
+    <a href="?page=1">Trang đầu</a>
+    <a href="?page={{ page_obj.previous_page_number }}">‹ Trước</a>
+    {% endif %}
+
+    <span
+      >Trang {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span
+    >
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">Tiếp ›</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối</a>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

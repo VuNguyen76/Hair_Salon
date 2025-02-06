@@ -14,15 +14,26 @@
       </div>
       <nav class="menu">
         <ul>
-          <li class="active"><a href="#dashboard">Dashboard</a></li>
+          <li class="active"><a href="/manage/">Dashboard</a></li>
           <li><a href="#employees">Nhân sự</a></li>
           <li><a href="#finances">Tài chính</a></li>
           <li><a href="#reports">Báo cáo</a></li>
-          <li><a href="#service">Dịch vụ</a></li>
+          <li><a href="/manage_service/">Dịch vụ</a></li>
           <li><a href="#logout">Đăng xuất</a></li>
         </ul>
       </nav>
     </aside>
-    {% block content%} {% endblock%}
+    <main class="main-content">
+      <header class="header">
+        <h1>CN Salon</h1>
+        <div class="user-info">
+          <p>Xin chào, <strong>Chủ Salon</strong></p>
+          <img src="https://via.placeholder.com/40" alt="User Avatar" />
+        </div>
+      </header>
+
+      {% block content%} {% endblock%}
+    </main>
   </body>
+  <script src="{% static 'management/js/manage.js' %}"></script>
 </html>
