@@ -6,3 +6,5 @@ def manage_dashboard(request):
     total_revenue = sum(booking.revenue for booking in completed_bookings)
     
     return render(request, 'manage_dashboard.html', {'completed_bookings': completed_bookings, 'total_revenue': total_revenue})
+def manage_service(request):
+    egcye

@@ -23,27 +23,41 @@ def staff(request):
         'canceled_count': canceled_count,
     }
     return render(request, 'staff_dashboard.html', context)
+from decimal import Decimal
+from django.shortcuts import render, get_object_or_404, redirect
+from booking.models import Booking
+
 def staff_booking_single(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)  # Lấy đơn đặt lịch theo ID
 
     if request.method == 'POST':
-        # Cập nhật trạng thái khi nhân viên gửi form
         new_status = request.POST.get('status')
+        reward_points_used = request.POST.get('reward_points_used')  # Lấy số điểm muốn sử dụng từ form
+
         booking.status = new_status
+
         if new_status == 'completed':
             booking.revenue = booking.total_price()  # Cập nhật doanh thu nếu trạng thái là "Hoàn thành"
-            reward_points = booking.revenue * Decimal('0.1')
-            
+            earned_points = booking.revenue * Decimal('0.1')  # Tính điểm thưởng kiếm được
+
             # Cập nhật số điểm thưởng cho khách hàng
             if booking.user:
                 user_profile = booking.user.infor  # Lấy thông tin người dùng
-                user_profile.reward_points += reward_points  # Thêm điểm thưởng
-                user_profile.save()
-        booking.save()
+                reward_points_used = Decimal(reward_points_used) if reward_points_used else Decimal('0')
 
+                if reward_points_used > user_profile.reward_points:
+                    reward_points_used = user_profile.reward_points  # Không cho sử dụng nhiều hơn số điểm đang có
+                
+                booking.revenue -= reward_points_used  # Giảm doanh thu bằng số điểm sử dụng
+                user_profile.reward_points -= reward_points_used  # Trừ điểm của khách
+                user_profile.reward_points += earned_points  # Cộng điểm thưởng mới
+                user_profile.save()
+
+        booking.save()
         return redirect('staff')  # Quay lại trang danh sách sau khi cập nhật
 
     return render(request, 'staff_booking_single.html', {'booking': booking})
+
 
 def staff_booking_multiple(request):
     if request.method == 'POST':
