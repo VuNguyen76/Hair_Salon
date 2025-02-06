@@ -6,13 +6,8 @@ from django.core.paginator import Paginator
 def manage_dashboard(request):
     completed_bookings = Booking.objects.filter(status='completed').order_by('-id')  # Sắp xếp theo ID mới nhất
     total_revenue = sum(booking.revenue for booking in completed_bookings)
-
-    paginator = Paginator(completed_bookings, 5)  # Mỗi trang có 5 booking
-    page_number = request.GET.get('page')  # Lấy số trang từ URL
-    page_obj = paginator.get_page(page_number)  # Lấy danh sách booking cho trang hiện tại
-
-    return render(request, 'manage_dashboard.html', {'page_obj': page_obj, 'total_revenue': total_revenue})
-
+    
+    return render(request, 'manage_dashboard.html', {'completed_bookings': completed_bookings, 'total_revenue': total_revenue})
 def manage_service(request):
     services = Service.objects.all().order_by('-id')  # Lấy danh sách dịch vụ và sắp xếp theo ID mới nhất
     

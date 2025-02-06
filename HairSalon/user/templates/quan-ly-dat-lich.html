@@ -3,8 +3,9 @@
 {% load humanize %}
 
 {% block style %}
-  {%static 'css/quan-ly-dat-lich/quan-ly-dat-lich.css'%}
+  {% static 'css/quan-ly-dat-lich/quan-ly-dat-lich.css' %}
 {% endblock %}
+
 {% block content %}
     <section>
     <div class="quan-ly-dat-lich">
@@ -20,6 +21,7 @@
                 <th>Ngày đặt lịch</th>
                 <th>Giờ đặt lịch</th>
                 <th>Tổng chi phí</th>
+                <th>Hành động</th> <!-- Thêm cột hành động -->
               </tr>
               {% for booking in bookings %}
               <tr>
@@ -31,10 +33,19 @@
                 <td>{{ booking.booking_date }}</td>
                 <td>{{ booking.booking_time }}</td>
                 <td>{{ booking.total_price|floatformat:0|intcomma }}</td>
+
+                <!-- Thêm nút hủy nếu booking chưa bị hủy -->
+                <td>
+                  {% if booking.status != 'canceled' %}
+                    <a href="{% url 'cancel_booking' booking.id %}" class="btn btn-danger">Hủy</a>
+                  {% else %}
+                    <span>Đã hủy</span>
+                  {% endif %}
+                </td>
               </tr>
               {% empty %}
               <tr>
-                <td style="text-align:center;" colspan="8">Bạn chưa có lịch đặt nào.</td>
+                <td style="text-align:center;" colspan="9">Bạn chưa có lịch đặt nào.</td>
               </tr>
               {% endfor %}
             </table>
@@ -42,8 +53,7 @@
     </div>
   </section>
 {% endblock %}
-{%block script%}
-    <script type="module" src="{%static 'js/main.js'%}"></script>
+
+{% block script %}
+    <script type="module" src="{% static 'js/main.js' %}"></script>
 {% endblock %}
-    
-</html>
