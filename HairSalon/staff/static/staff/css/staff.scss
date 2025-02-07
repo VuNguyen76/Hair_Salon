@@ -179,8 +179,11 @@ a {
     margin-top: 10px;
   }
   select {
+    height: 30px;
+    width: 200px;
+    outline: none;
     border: none;
-    box-shadow: 0 1px 1px 5px $shadow;
+    box-shadow: 0 4px 5px $shadow;
   }
 }
 .step-links {

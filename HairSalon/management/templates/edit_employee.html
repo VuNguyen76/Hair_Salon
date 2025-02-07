@@ -1,0 +1,11 @@
+{% extends 'base_manage.html' %}
+{% block content %}
+<div class="service-form">
+  <h2>Sửa Thông Tin Nhân Viên</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Cập Nhật Nhân Viên</button>
+  </form>
+</div>
+{% endblock %}

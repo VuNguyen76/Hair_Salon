@@ -203,3 +203,11 @@ body {
 .service-list h2 {
   margin-bottom: 15px;
 }
+
+select {
+  height: 30px;
+  width: 200px;
+  outline: none;
+  border: none;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+}

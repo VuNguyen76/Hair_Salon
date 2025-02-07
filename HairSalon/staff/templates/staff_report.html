@@ -1,0 +1,76 @@
+{% extends 'base_manage.html' %} {% block content %}
+<h2>Hệ Thống Trao Đổi</h2>
+
+<!-- Khu vực hiển thị tin nhắn -->
+<div class="chat-container" id="chatContainer">
+    {% for message in messages %}
+    <div class="message {% if message.sender == user %}sent{% else %}received{% endif %}">
+      <p><strong>{{ message.sender.username }}:</strong> {{ message.content }}</p>
+      <small>{{ message.timestamp }}</small>
+    </div>
+    {% endfor %}
+  </div>
+
+<!-- Form gửi tin nhắn -->
+<form method="POST" class="chat-form">
+  {% csrf_token %}
+  <input name="message"  placeholder="Nhập báo cáo..."></input>
+  <button type="submit">Gửi</button>
+</form>
+
+<style>
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 400px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .message {
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 70%;
+    margin-bottom: 5px;
+    clear: both;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sent {
+    background-color: #d1f5d1;
+    align-self: flex-end; /* Tin nhắn của người gửi hiển thị bên phải */
+  }
+
+  .received {
+    background-color: #f1f1f1;
+    align-self: flex-start; /* Tin nhắn của người nhận hiển thị bên trái */
+  }
+
+  .chat-form {
+    display: flex;
+    gap: 10px;
+  }
+
+  .chat-form input {
+    flex: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+
+  .chat-form button {
+    padding: 8px 15px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+</style>
+{% endblock %}

@@ -1,23 +1,23 @@
-{% extends "base_manage.html" %}{% block content%}
-
+{% extends "base_manage.html" %} {% load humanize %} {% block content %}
+<!-- Thống Kê -->
 <section class="stats">
   <div class="stat-card">
-    <h2>Doanh thu tháng này</h2>
-    <p>0</p>
+    <h2>Tổng doanh thu</h2>
+    <p>{{ total_revenue|floatformat:0|intcomma }} VNĐ</p>
   </div>
   <div class="stat-card">
     <h2>Số nhân viên</h2>
-    <p>0</p>
+    <p>{{ total_employees }}</p>
   </div>
   <div class="stat-card">
     <h2>Khách hàng phục vụ</h2>
-    <p>0</p>
+    <p>{{ total_customers_served }}</p>
   </div>
 </section>
 
-<!-- Employee Management -->
+<!-- Quản lý nhân viên -->
 <section class="employees">
-  <h2>Quản lý nhân sự</h2>
+  <h2>Danh sách nhân viên</h2>
   <table>
     <thead>
       <tr>
@@ -28,50 +28,34 @@
       </tr>
     </thead>
     <tbody>
+      {% for employee in page_obj %}
       <tr>
-        <td>Nguyễn Văn A</td>
-        <td>Thợ chính</td>
-        <td>8,000,000 VNĐ</td>
-        <td>1,000,000 VNĐ</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.position }}</td>
+        <td>{{ employee.salary|floatformat:0|intcomma }} VNĐ</td>
+        <td>{{ employee.reward|floatformat:0|intcomma }} VNĐ</td>
       </tr>
-      <tr>
-        <td>Nguyễn Văn A</td>
-        <td>Thợ chính</td>
-        <td>8,000,000 VNĐ</td>
-        <td>1,000,000 VNĐ</td>
-      </tr>
-      <tr>
-        <td>Nguyễn Văn A</td>
-        <td>Thợ chính</td>
-        <td>8,000,000 VNĐ</td>
-        <td>1,000,000 VNĐ</td>
-      </tr>
-      <tr>
-        <td>Nguyễn Văn A</td>
-        <td>Thợ chính</td>
-        <td>8,000,000 VNĐ</td>
-        <td>1,000,000 VNĐ</td>
-      </tr>
-      <tr>
-        <td>Nguyễn Văn A</td>
-        <td>Thợ chính</td>
-        <td>8,000,000 VNĐ</td>
-        <td>1,000,000 VNĐ</td>
-      </tr>
-      <tr>
-        <td>Nguyễn Văn A</td>
-        <td>Thợ chính</td>
-        <td>8,000,000 VNĐ</td>
-        <td>1,000,000 VNĐ</td>
-      </tr>
-      <tr>
-        <td>Trần Thị B</td>
-        <td>Thợ phụ</td>
-        <td>5,000,000 VNĐ</td>
-        <td>500,000 VNĐ</td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
-</section>
 
-{% endblock%}
+  <!-- Phân trang -->
+  <div class="pagination">
+    <div class="step-links">
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; Trang đầu</a>
+      <a href="?page={{ page_obj.previous_page_number }}">«</a>
+      {% endif %}
+
+      <span class="current">
+        Trang {{ page_obj.number }} của {{ page_obj.paginator.num_pages }}
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">»</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

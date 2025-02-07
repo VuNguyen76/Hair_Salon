@@ -1,0 +1,86 @@
+{% extends 'base_manage.html' %} {% load humanize %} {% block content %}
+<section class="stats">
+  <div class="stat-card">
+    <h2>Tổng số nhân viên</h2>
+    <p>{{ total_employees }}</p>
+  </div>
+  <div class="stat-card">
+    <h2>Xin nghỉ</h2>
+    <p>{{ off }}</p>
+  </div>
+  <div class="stat-card">
+    <h2>Đang nghỉ phép</h2>
+    <p>{{ on_leave }}</p>
+  </div>
+  <div class="stat-card">
+    <h2>Đang làm</h2>
+    <p>{{ working }}</p>
+  </div>
+</section>
+<!-- Form Thêm Nhân Viên -->
+<div class="service-form">
+  <h2>Thêm Nhân Viên</h2>
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Thêm Nhân Viên</button>
+  </form>
+</div>
+
+<!-- Danh Sách Nhân Viên -->
+<section class="employees">
+  <h2>Danh Sách Nhân Viên</h2>
+  <table border="1">
+    <tr>
+      <th>Tên Nhân Viên</th>
+      <th>Số Điện Thoại</th>
+      <th>Chức Vụ</th>
+      <th>Lương</th>
+      <th>Thưởng</th>
+      <th>Tình Trạng</th>
+      <th>Hành Động</th>
+    </tr>
+    {% for employee in page_obj %}
+    <tr>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.phone_number }}</td>
+      <td>{{ employee.position }}</td>
+      <td>{{ employee.salary|floatformat:0|intcomma }} VNĐ</td>
+      <td>{{ employee.reward|floatformat:0|intcomma }} VNĐ</td>
+      <td>{{ employee.get_status_display }}</td>
+      <td>
+        <a class="edit-btn" href="{% url 'edit_employee' employee.pk %}">Sửa</a>
+        |
+        <a
+          class="delete-btn"
+          href="{% url 'delete_employee' employee.pk %}"
+          onclick="return confirm('Bạn có chắc muốn xóa nhân viên này?');"
+          >Xóa</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <!-- Phân trang -->
+  <div class="pagination">
+    <div class="step-links">
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; Trang đầu</a>
+      <a href="?page={{ page_obj.previous_page_number }}"
+        ><i class="fa-solid fa-backward"></i
+      ></a>
+      {% endif %}
+
+      <span class="current">
+        Trang {{ page_obj.number }} của {{ page_obj.paginator.num_pages }}
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}"
+        ><i class="fa-solid fa-forward"></i
+      ></a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

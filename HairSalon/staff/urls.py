@@ -7,4 +7,5 @@ urlpatterns = [
     path('staff_booking/', views.staff_booking_multiple, name='staff_booking_multiple'),  # Trang xử lý nhiều đơn đặt lịch
     path('staff_account/', views.staff_account, name='staff_account'), 
     path('staff_booking_details/<int:user_id>/', views.staff_booking_details, name='staff_booking_details'),
+    path('staff_report/', views.staff_report, name='staff_report'), 
 ]

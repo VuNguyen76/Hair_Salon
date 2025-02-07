@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404, redirect
 from booking.models import Booking
+from management.models import Message
 from django.core.paginator import Paginator
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
-from user.models import Infor
+
 @login_required(login_url='/login/')
 
 def staff(request):
@@ -111,3 +112,30 @@ def staff_booking_details(request, user_id):
     user = get_object_or_404(User, id=user_id)
     bookings = Booking.objects.filter(user=user).order_by('-booking_date')
     return render(request, 'staff_booking_details.html', {'user': user, 'bookings': bookings})
+
+def staff_report(request):
+    # Xác định người dùng hiện tại (quản lý hoặc nhân viên)
+    user = request.user
+
+    # Lấy tất cả tin nhắn giữa nhân viên và quản lý
+    messages = Message.objects.filter(
+        receiver=user
+    ) | Message.objects.filter(
+        sender=user
+    ).order_by('timestamp')
+
+    # Gửi tin nhắn khi có yêu cầu POST
+    if request.method == 'POST':
+        content = request.POST.get('message')
+        if content:
+            # Xác định người nhận (nếu người dùng là nhân viên thì người nhận là quản lý và ngược lại)
+            if user.is_staff:  # Quản lý gửi tin nhắn cho nhân viên
+                receiver = User.objects.exclude(id=user.id).filter(is_staff=False).first()  # Nhân viên
+            else:  # Nhân viên phản hồi cho quản lý
+                receiver = User.objects.exclude(id=user.id).filter(is_staff=True).first()  # Quản lý
+
+            # Tạo và lưu tin nhắn mới
+            Message.objects.create(sender=user, receiver=receiver, content=content)
+            return redirect('staff_report')  # Reload trang sau khi gửi tin nhắn
+
+    return render(request, 'staff_report.html', {'messages': messages})

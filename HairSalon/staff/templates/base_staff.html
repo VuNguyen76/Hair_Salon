@@ -24,7 +24,7 @@
           <li class="active"><a href="/staff">Dashboard</a></li>
           <li><a href="/staff_booking/">Lịch Hẹn</a></li>
           <li><a href="/staff_account">Tài khoản</a></li>
-          <li><a href="#">Báo Cáo</a></li>
+          <li><a href="/staff_report">Thông báo và trao đổi</a></li>
           <li><a href="/logout/">Đăng xuất</a></li>
         </ul>
       </nav>
@@ -41,6 +41,13 @@
     <script src="{% static 'staff/js/staff.js' %}"></script>
     <script>
       document.body.style.zoom = "125%";
+      document.addEventListener("DOMContentLoaded", function () {
+        // Lấy phần tử chat container
+        var chatContainer = document.getElementById("chatContainer");
+
+        // Cuộn đến cuối cùng của chat container
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      });
     </script>
   </body>
 </html>

@@ -238,3 +238,10 @@ body {
     margin-bottom: 15px;
   }
 }
+select {
+  height: 30px;
+  width: 200px;
+  outline: none;
+  border: none;
+  box-shadow: 0 4px 5px $shadow;
+}
