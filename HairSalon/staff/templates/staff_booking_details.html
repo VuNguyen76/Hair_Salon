@@ -1,0 +1,27 @@
+{% extends "base_staff.html" %} {% block content %}
+<section class="appointments">
+  <h2>Chi tiết lịch hẹn của {{ user.username }}</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ngày giờ</th>
+        <th>Dịch vụ</th>
+        <th>Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking in bookings %}
+      <tr>
+        <td>{{ booking.booking_date }} {{ booking.booking_time }}</td>
+        <td>{{ booking.services.all|join:", " }}</td>
+        <td>{{ booking.get_status_display }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="/staff_account">Quay lại</a>
+</section>
+
+{% endblock %}

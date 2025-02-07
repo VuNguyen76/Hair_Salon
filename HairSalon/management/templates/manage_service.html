@@ -61,20 +61,27 @@
     {% endfor %}
   </table>
 
+  <!-- Phân trang -->
   <div class="pagination">
-    {% if page_obj.has_previous %}
-    <a href="?page=1">Trang đầu</a>
-    <a href="?page={{ page_obj.previous_page_number }}">‹ Trước</a>
-    {% endif %}
+    <div class="step-links">
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; Trang đầu</a>
+      <a href="?page={{ page_obj.previous_page_number }}"
+        ><i class="fa-solid fa-backward"></i
+      ></a>
+      {% endif %}
 
-    <span
-      >Trang {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span
-    >
+      <span class="current">
+        Trang {{ page_obj.number }} của {{ page_obj.paginator.num_pages }}
+      </span>
 
-    {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}">Tiếp ›</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối</a>
-    {% endif %}
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}"
+        ><i class="fa-solid fa-forward"></i
+      ></a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
+      {% endif %}
+    </div>
   </div>
 </section>
 

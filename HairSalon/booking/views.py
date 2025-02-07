@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import BookingForm, LookupForm
 from .models import Booking 
-import ast
 
 def booking_view(request):
     if request.method == 'POST':

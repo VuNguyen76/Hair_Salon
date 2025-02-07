@@ -20,16 +20,31 @@ $white: white;
 $dark-gray: #16a085;
 $light-gray: #f9f9f9;
 $shadow: rgba(0, 0, 0, 0.1);
-
+html {
+  background-color: $background-color;
+}
+h2 {
+  margin: 20px 0 10px 0;
+}
+input {
+  width: 500px;
+  height: 100%;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 5px $shadow;
+}
 // Sidebar Styles
 .sidebar {
-  width: 250px;
+  width: 280px;
   background-color: $primary-color;
   color: $white;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-
+  position: fixed;
+  height: 100vh;
   .logo {
     text-align: center;
     padding: 20px 0;
@@ -70,8 +85,12 @@ $shadow: rgba(0, 0, 0, 0.1);
   flex-grow: 1;
   padding: 20px;
   background-color: $background-color;
+  margin-left: 280px;
 }
-
+a {
+  color: #16a085;
+  text-decoration: none;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -149,5 +168,26 @@ $shadow: rgba(0, 0, 0, 0.1);
     tr:hover {
       background-color: #f1f1f1;
     }
+  }
+  .send {
+    background: #1abc9c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  select {
+    border: none;
+    box-shadow: 0 1px 1px 5px $shadow;
+  }
+}
+.step-links {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  a {
+    margin: 0 15px;
   }
 }

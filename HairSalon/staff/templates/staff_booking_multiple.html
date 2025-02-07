@@ -1,6 +1,8 @@
-{% extends "base_staff.html" %} {% load static %} {% block content %}
+{% extends "base_staff.html" %}
+{% load static %} 
+{% block content %}
 <!-- Booking Details Section -->
-<section class="booking-details">
+<section class="appointments">
   <h2>Danh sách Lịch Hẹn</h2>
   <form method="POST">
     {% csrf_token %}
@@ -8,17 +10,21 @@
       <thead>
         <tr>
           <th>Khách hàng</th>
-          <th>Ngày Giờ</th>
+          <th>Ngày - Giờ</th>
           <th>Dịch Vụ</th>
+          <th>Lời nhắn</th>
           <th>Trạng Thái</th>
+          <th>Hành động</th>
         </tr>
       </thead>
       <tbody>
         {% for booking in bookings %}
         <tr>
           <td>{{ booking.full_name }}</td>
-          <td>{{ booking.booking_date }} {{ booking.booking_time }}</td>
-          <td>{{ booking.services.all|join:", " }}</td>
+        <td>{{ booking.booking_date }} - {{ booking.booking_time }}</td>
+        <td>{{ booking.services.all|join:", " }}</td>
+        <td>{{ booking.message }}</td>
+        <td>{{ booking.get_status_display }}</td>
           <td>
             <select name="status_{{ booking.id }}" class="status-update">
               <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Chờ</option>
@@ -30,7 +36,24 @@
         {% endfor %}
       </tbody>
     </table>
-    <button type="submit" class="btn">Xác nhận</button>
+    <div style="display:flex; justify-content:center;"><button class="send" type="submit" >Xác nhận</button></div>
   </form>
+
+  <!-- Phân trang -->
+  <div class="pagination">
+    <span class="step-links">
+      {% if bookings.has_previous %}
+        <a href="?page=1">&laquo; Trang đầu</a>
+        <a href="?page={{ bookings.previous_page_number }}"><i class="fa-solid fa-backward"></i></a>
+      {% endif %}
+
+      <span>Trang {{ bookings.number }} / {{ bookings.paginator.num_pages }}</span>
+
+      {% if bookings.has_next %}
+        <a href="?page={{ bookings.next_page_number }}"><i class="fa-solid fa-forward"></i></a>
+        <a href="?page={{ bookings.paginator.num_pages }}">Trang cuối &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
 </section>
 {% endblock %}

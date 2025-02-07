@@ -1,0 +1,95 @@
+{% extends "base_staff.html" %} {% load static %} {% block content %}
+<div></div>
+{% load humanize %}
+<section class="appointments">
+  <!-- Form Tìm Kiếm -->
+  <h2>Tìm kiếm khách hàng</h2>
+  <form  method="GET">
+    <input
+      type="text"
+      name="phone_number"
+      placeholder="Nhập số điện thoại khách hàng..."
+      value="{{ search_query }}"
+    />
+    <button style="margin-left: 20px;" class="send" type="submit">Tìm Kiếm</button>
+  </form>
+
+  <!-- Nếu có kết quả tìm kiếm, hiển thị ở trên -->
+  {% if search_query %}
+  <h2>Kết quả tìm kiếm của: "{{ search_query }}"</h2>
+  {% if found_users %}
+  <table>
+    <thead>
+      <tr>
+        <th>Tên Khách Hàng</th>
+        <th>Số Điện Thoại</th>
+        <th>Điểm Tích Lũy</th>
+        <th>Lịch Hẹn</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in found_users %}
+      <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.infor.phone }}</td>
+        <td>{{ user.infor.reward_points|floatformat:0|intcomma  }}</td>
+        <td><a href="{% url 'staff_booking_details' user.id %}">Chi Tiết</a></td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h3 style="text-align: center; margin: 15px 0;">Không tìm thấy khách hàng nào.</h3></div>
+  {% endif %} {% endif %}
+
+  <!-- Luôn hiển thị danh sách khách hàng -->
+  <h2>Danh Sách Tài Khoản Khách Hàng</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tên Khách Hàng</th>
+        <th>Số Điện Thoại</th>
+        <th>Điểm Tích Lũy</th>
+        <th>Lịch Hẹn</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in page_obj %}
+      <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.infor.phone }}</td>
+        <td>{{ user.infor.reward_points|floatformat:0|intcomma }}</td>
+        <td>
+          <a href="{% url 'staff_booking_details' user.id %}">Chi Tiết</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+    <!-- Phân trang -->
+    <div class="pagination">
+    <div class="step-links">
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; Trang đầu</a>
+      <a href="?page={{ page_obj.previous_page_number }}"
+        ><i class="fa-solid fa-backward"></i
+      ></a>
+      {% endif %}
+
+      <span class="current">
+        Trang {{ page_obj.number }} của {{ page_obj.paginator.num_pages }}
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}"
+        ><i class="fa-solid fa-forward"></i
+      ></a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -17,13 +17,14 @@
 <!-- Appointments Section -->
 <section class="appointments" id="appointments">
   <h2>Danh sách Lịch Hẹn</h2>
+
   <table>
     <thead>
       <tr>
-        <th>#</th>
         <th>Khách hàng</th>
-        <th>Ngày Giờ</th>
+        <th>Ngày - Giờ</th>
         <th>Dịch Vụ</th>
+        <th>Lời nhắn</th>
         <th>Trạng Thái</th>
         <th>Hành động</th>
       </tr>
@@ -31,10 +32,10 @@
     <tbody>
       {% for booking in page_obj %}
       <tr>
-        <td>{{ booking.id }}</td>
         <td>{{ booking.full_name }}</td>
-        <td>{{ booking.booking_date }} {{ booking.booking_time }}</td>
+        <td>{{ booking.booking_date }} - {{ booking.booking_time }}</td>
         <td>{{ booking.services.all|join:", " }}</td>
+        <td>{{ booking.message }}</td>
         <td>{{ booking.get_status_display }}</td>
 
         <td>
@@ -51,21 +52,25 @@
 
   <!-- Phân trang -->
   <div class="pagination">
-    <span class="step-links">
+    <div class="step-links">
       {% if page_obj.has_previous %}
-      <a href="?page=1">&laquo; Đầu</a>
-      <a href="?page={{ page_obj.previous_page_number }}"><<</a>
+      <a href="?page=1">&laquo; Trang đầu</a>
+      <a href="?page={{ page_obj.previous_page_number }}"
+        ><i class="fa-solid fa-backward"></i
+      ></a>
       {% endif %}
 
       <span class="current">
-        Trang {{ page_obj.number }} của {{ page_obj.paginator.num_pages }}.
+        Trang {{ page_obj.number }} của {{ page_obj.paginator.num_pages }}
       </span>
 
       {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">>></a>
-      <a href="?page={{ page_obj.paginator.num_pages }}">Cuối &raquo;</a>
+      <a href="?page={{ page_obj.next_page_number }}"
+        ><i class="fa-solid fa-forward"></i
+      ></a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
       {% endif %}
-    </span>
+    </div>
   </div>
 </section>
 

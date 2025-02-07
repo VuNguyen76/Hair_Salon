@@ -2,12 +2,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from booking.models import Booking,Service
 from .forms import ServiceForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/login/')
 def manage_dashboard(request):
     completed_bookings = Booking.objects.filter(status='completed').order_by('-id')  # Sắp xếp theo ID mới nhất
     total_revenue = sum(booking.revenue for booking in completed_bookings)
     
     return render(request, 'manage_dashboard.html', {'completed_bookings': completed_bookings, 'total_revenue': total_revenue})
+def manage_staff(request): 
+    return render(request, 'manage_staff.html')
+
 def manage_service(request):
     services = Service.objects.all().order_by('-id')  # Lấy danh sách dịch vụ và sắp xếp theo ID mới nhất
     
