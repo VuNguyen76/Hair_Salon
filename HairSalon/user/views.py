@@ -2,13 +2,19 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegisterForm,LoginForm
-from .models import Infor
+from .models import Infor,Feedback
 from booking.models import Booking, Service
-from management.forms import ServiceForm
+from django.contrib.auth.models import User
 
 def main(request):
-    return render(request, 'main.html')
+    if request.method == "POST":
+        content = request.POST.get('text')
+        if content:
+            feedback = Feedback(content=content, user=request.user if request.user.is_authenticated else None)
+            feedback.save()
+            return redirect('main')  # Chuyển hướng đến trang quản lý phản hồi
 
+    return render(request, 'main.html')  # Trả về trang form phản hồi
 def about(request):
     return render(request, 'about.html')
 def service(request):
@@ -106,4 +112,10 @@ def cancel_booking_view(request, booking_id):
     # Sau khi hủy, chuyển hướng về trang chi tiết lịch hẹn
     return redirect('quan_ly_dat_lich')
 
+def review_infor(request):
+    users = User.objects.all()
+    return render(request, 'review_infor.html', {'users': users})
+
+def update_infor(request):
+    return render(request, 'update_infor.html')
 

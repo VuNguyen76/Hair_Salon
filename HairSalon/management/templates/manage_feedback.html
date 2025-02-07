@@ -1,0 +1,45 @@
+{% extends 'base_manage.html' %} {% block content %}
+<section class="feedback">
+  <h1>Quản Lý Ý Kiến</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Người Gửi</th>
+        <th>Ý Kiến</th>
+        <th>Ngày Gửi</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for feedback in page_obj %}
+      <tr>
+        <td>{{ feedback.user.username}}</td>
+        <td>{{ feedback.content }}</td>
+        <td>{{ feedback.created_at|date:"d/m/Y H:i" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!-- Phân trang -->
+  <div class="pagination">
+    <div class="step-links">
+      {% if page_obj.has_previous %}
+      <a href="?page=1">&laquo; Trang đầu</a>
+      <a href="?page={{ page_obj.previous_page_number }}"
+        ><i class="fa-solid fa-backward"></i
+      ></a>
+      {% endif %}
+
+      <span class="current">
+        Trang {{ page_obj.number }} của {{ page_obj.paginator.num_pages }}
+      </span>
+
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}"
+        ><i class="fa-solid fa-forward"></i
+      ></a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Trang cuối &raquo;</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

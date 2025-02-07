@@ -399,6 +399,7 @@ header .row_header .user-dashboard .comment:hover {
   width: 100%;
   height: 100vh;
   color: white;
+  background: rgba(0, 0, 0, 0.7);
   font-family: "Arial, Helvetica, sans-serif";
   position: fixed;
   top: 0;
@@ -417,7 +418,7 @@ header .row_header .user-dashboard .comment:hover {
   padding: 20px;
   opacity: 1;
   position: absolute;
-  top: 70%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

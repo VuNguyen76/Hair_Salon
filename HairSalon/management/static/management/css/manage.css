@@ -118,7 +118,8 @@ body {
   background-color: #3498db;
 }
 
-.table-style, .employees table,
+.table-style, .feedback table,
+.employees table,
 .service-list table {
   width: 100%;
   border-collapse: collapse;
@@ -127,29 +128,35 @@ body {
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.table-style th, .employees table th,
+.table-style th, .feedback table th,
+.employees table th,
 .service-list table th,
 .table-style td,
+.feedback table td,
 .employees table td,
 .service-list table td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
-.table-style th, .employees table th,
+.table-style th, .feedback table th,
+.employees table th,
 .service-list table th {
   background-color: #1abc9c;
   color: white;
 }
-.table-style .service_img, .employees table .service_img,
+.table-style .service_img, .feedback table .service_img,
+.employees table .service_img,
 .service-list table .service_img {
   height: 50px;
 }
-.table-style tr:nth-child(even), .employees table tr:nth-child(even),
+.table-style tr:nth-child(even), .feedback table tr:nth-child(even),
+.employees table tr:nth-child(even),
 .service-list table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
-.table-style tr:hover, .employees table tr:hover,
+.table-style tr:hover, .feedback table tr:hover,
+.employees table tr:hover,
 .service-list table tr:hover {
   background-color: #f1f1f1;
 }

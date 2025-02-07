@@ -81,8 +81,8 @@
                 <i class="fa-solid fa-comments"></i> Đóng góp ý kiến
               </li>
               <li>
-                <a href="#">
-                  <i class="fa-solid fa-gear"></i> Chỉnh sửa thông tin
+                <a href="/review_infor/">
+                  <i class="fa-solid fa-gear"></i> Xem thông tin tài khoản
                 </a>
               </li>
               <li>
@@ -111,11 +111,12 @@
     <!-- Main Content -->
     <main>
       {% block content %}{% endblock %}
-      <section>
-        <div class="comment-dashboard hidden">
-          <div class="container">
-            <div class="row-comment">
-              <h1 class="heading">Hãy cho chúng tôi biết ý kiến của bạn!!!</h1>
+      <section class="comment-dashboard hidden">
+        <div class="container">
+          <div class="row-comment">
+            <h1 class="heading">Hãy cho chúng tôi biết ý kiến của bạn!!!</h1>
+            <form method="POST">
+              {% csrf_token %}
               <textarea
                 name="text"
                 class="formTextarea"
@@ -131,7 +132,6 @@
                 "
                 placeholder="Nhập ý kiến ở đây..."
               ></textarea>
-
               <div style="text-align: center">
                 <button
                   class="btn-comment"
@@ -146,7 +146,7 @@
                   <a style="color: #dd1956" href="#">Liên hệ</a> chúng tôi.
                 </p>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </section>
@@ -199,7 +199,7 @@
     {% block script %}{% endblock %}
     <script type="module" src=""></script>
     <script>
-      document.body.style.zoom = "75%";
+      document.body.style.zoom = "100%";
     </script>
   </body>
 </html>

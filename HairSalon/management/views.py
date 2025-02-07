@@ -4,6 +4,7 @@ from .forms import ServiceForm, EmployeeForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .models import Employee, Message
+from user.models import Feedback
 from django.contrib.auth.models import User
 
 @login_required(login_url='/login/')
@@ -139,3 +140,12 @@ def manage_report(request):
             return redirect('manage_report')
 
     return render(request, 'manage_report.html', {'messages': messages})
+
+def manage_feedback(request):
+    # Chuyển hướng về trang chủ hoặc trang khác    
+    feedback_list = Feedback.objects.all().order_by('-created_at')
+    paginator = Paginator(feedback_list, 10)  # Hiển thị 10 nhân viên mỗi trang
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'manage_feedback.html', {'page_obj': page_obj})
