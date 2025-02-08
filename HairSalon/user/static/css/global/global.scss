@@ -305,3 +305,25 @@ header {
     }
   }
 }
+.row-contact-base {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 100px;
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 5rem;
+    height: 70px;
+    width: 70px;
+    margin: 20px;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      height: 100px;
+      width: 100px;
+      font-size: 7rem;
+    }
+  }
+}

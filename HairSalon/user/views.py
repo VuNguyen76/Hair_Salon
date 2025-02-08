@@ -19,6 +19,8 @@ def main(request):
     return render(request, 'main.html')  # Trả về trang form phản hồi
 def about(request):
     return render(request, 'about.html')
+def contact(request):
+    return render(request, 'contact.html')
 def service(request):
     query = request.GET.get('search', '')  # Lấy từ khóa tìm kiếm từ URL
 

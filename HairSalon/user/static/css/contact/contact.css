@@ -1,0 +1,30 @@
+.contact .row_contact {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 50px;
+  gap: 50px;
+}
+.contact .row_contact .infor_contact {
+  margin: 0 15px;
+}
+.contact .row_contact .infor_contact h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.contact .row_contact .infor_contact ul {
+  list-style-type: circle;
+  margin: 0 25px;
+}
+.contact .row_contact .infor_contact strong {
+  display: inline-block;
+  font-weight: bold;
+  margin: 10px 20px;
+  margin-right: 5px;
+}
+.contact .row_contact .infor_contact li {
+  margin: 20px 0;
+  font-size: 1.6rem;
+}

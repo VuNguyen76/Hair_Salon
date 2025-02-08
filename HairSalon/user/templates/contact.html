@@ -1,0 +1,43 @@
+{% extends "base.html" %} {%load static%} {% load humanize %}
+
+<div></div>
+{% block style %} {%static 'css/contact/contact.css'%} {% endblock %}
+<div></div>
+
+{% block content %}
+<section style="margin-top: 150px">
+  <div class="contact">
+    <div class="container">
+      <div class="row_contact" style="display: flex">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15673.130950940584!2d106.6173239518588!3d10.86608666295462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b4af96ff427%3A0xfbee615e95fc783f!2sHair%20Salon%20Phong%20C%C3%A1ch!5e0!3m2!1svi!2sus!4v1735050997578!5m2!1svi!2sus"
+          width="600"
+          height="400"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <div class="infor_contact">
+          <h1>LIÊN HỆ VỚI CHÚNG TÔI</h1>
+          <strong>Địa chỉ: </strong>
+          <ul>
+            <li>HCM, CN Hair Salon 189 Trung Mỹ Tây, Tô Ký, Q.12, TP.HCM</li>
+            <li>Hà nội, CN Hair Salon 145 Chùa Láng, Đống Đa, Hà Nội</li>
+            <li>
+              Đà nẵng, CN Hair Salon 85 Đ. Trần Cao Vân, Hội An, Quảng Nam
+            </li>
+          </ul>
+
+          <strong>Email: </strong>cnhairsalon9403@gmail.com <br />
+
+          <strong>Hotline: </strong>0905.080.654 <br />
+
+          <strong>Giờ mở cửa: </strong>08:30 – 19:30 | Thứ 2 – Chủ nhật <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
