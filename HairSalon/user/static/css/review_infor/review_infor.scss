@@ -1,0 +1,45 @@
+.review_infor {
+  margin: 130px 0 150px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  .row_infor {
+    width: 700px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 25px;
+    color: black;
+    margin: 0 auto;
+    display: flex;
+    .left {
+      width: 40%;
+      text-align: center;
+      i {
+        font-size: 20rem;
+      }
+      .user_name {
+        font-size: 2.5rem;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    }
+    .right {
+      width: 60%;
+      font-size: 2.5rem;
+      padding: 15px;
+      strong {
+        display: inline-block;
+        font-weight: bold;
+      }
+      pre {
+        margin: 15px 0;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    }
+  }
+}

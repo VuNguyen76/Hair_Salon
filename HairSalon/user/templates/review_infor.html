@@ -1,17 +1,28 @@
 {% extends "base.html" %} {%load static%} {% load humanize %}
 
 <div></div>
-{% block style %} {%static 'css/service/service.css'%} {% endblock %}
+{% block style %} {%static 'css/review_infor/review_infor.css'%} {% endblock %}
 <div></div>
-
 {% block content %}
 <section class="review_infor">
   <div class="container">
     <div class="row_infor">
-        <div></div>
+      <!-- Hiển thị thông tin của người dùng hiện tại -->
+      <div class="left">
+        <i class="fa-solid fa-user"></i> <br />
+        <div class="user_name">{{ user.username }}</div>
+      </div>
+      <div class="right">
+        <pre><strong>Số điện thoại: </strong>{{ user.infor.phone }}</pre>
+        <pre><strong>Điểm tích luỹ: </strong>{{ user.infor.reward_points|floatformat:0|intcomma }} <i style="color: rgb(251, 255, 2);" class="fa-solid fa-star"></i></pre>
+        <pre><strong>Mật khẩu: </strong><strong>*******</strong></pre>
+        <button>
+          <a style="color: black" href="/update_infor">Thay đổi thông tin</a>
+        </button>
+      </div>
     </div>
   </div>
 </section>
-{% endblock %} {%block script%}
-<script type="module" src="{%static 'js/main.js'%}"></script>
+{% endblock %} {% block script %}
+<script type="module" src="{% static 'js/main.js' %}"></script>
 {% endblock %}

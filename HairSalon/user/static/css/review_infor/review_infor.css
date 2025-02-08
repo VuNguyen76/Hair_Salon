@@ -1,0 +1,44 @@
+.review_infor {
+  margin: 130px 0 150px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.review_infor .row_infor {
+  width: 700px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  color: black;
+  margin: 0 auto;
+  display: flex;
+}
+.review_infor .row_infor .left {
+  width: 40%;
+  text-align: center;
+}
+.review_infor .row_infor .left i {
+  font-size: 20rem;
+}
+.review_infor .row_infor .left .user_name {
+  font-size: 2.5rem;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.review_infor .row_infor .right {
+  width: 60%;
+  font-size: 2.5rem;
+  padding: 15px;
+}
+.review_infor .row_infor .right strong {
+  display: inline-block;
+  font-weight: bold;
+}
+.review_infor .row_infor .right pre {
+  margin: 15px 0;
+}
+.review_infor .row_infor .right input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

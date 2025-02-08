@@ -1,11 +1,100 @@
-{% extends "base.html" %} {%load static%} {% load humanize %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/register/register.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600&family=Sen:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="{% static 'img/favicon/favicon.png' %}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>SignUp</title>
+  </head>
 
-<div></div>
-{% block style %} {%static 'css/service/service.css'%} {% endblock %}
-<div></div>
+  <body>
+    <div class="register">
+      <div class="row_register">
+        <div class="register-form">
+          <div class="container">
+            <div class="back">
+              <a href="/login/"><i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+            <h1 style="font-size: 50px; margin-bottom:10px;">Đăng Ký</h1>
+            <p>Nhập thông tin để đăng ký tài khoản mới!</p>
+            <div class="form-layout">
+              <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
 
-{% block content %}
+                <div class="formInputs">
+                  <label class="form-label" for="username">Tên đăng nhập</label>
+                  {{ form.username }}
+                </div>
+                {% if form.username.errors %}
+                 <ul style="padding:0; margin:0;">
+                {% for error in form.username.errors %}
+                <li class="error_message">{{ error }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <div class="formInputs">
+                  <label class="form-label" for="phone">Số điện thoại</label>
+                  {{ form.phone }}
+                </div>
+                 {% if form.phone.errors %}
+                  <ul>
+                    {% for error in form.phone.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                <div class="formInputs">
+                  <label class="form-label" for="password">Mật khẩu</label>
+                  {{ form.password }}
+                </div>
+                <div class="formInputs">
+                  <label class="form-label" for="confirm-password"
+                    >Nhập lại mật khẩu</label
+                  >
+                  {{ form.password_confirm }}
+                </div>
 
-{% endblock %} {%block script%}
-<script type="module" src="{%static 'js/main.js'%}"></script>
-{% endblock %}
+                <button type="submit" class="btn-register">Đăng Ký</button>
+              </form>
+              <p class="desc_register">
+                Bạn đã có tài khoản?
+                <a style="color: #dd1956" href="/login">Đăng nhập</a>
+              </p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="register_welcome">
+          <div class="container">
+            <h2 class="heading_welcome">Welcome to <br />CN Hair Salon</h2>
+            <p class="desc_welcome">
+              CN Hair Salon – Trao niềm tin trao sắc đẹp nơi mang lại vẻ đẹp
+              hoàn hảo cho mái tóc của bạn.
+            </p>
+            <img
+              src="{% static 'img/login/welcome.png' %}"
+              alt="welcome image"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

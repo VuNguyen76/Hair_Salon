@@ -1,11 +1,43 @@
 {% extends "base.html" %} {%load static%} {% load humanize %}
-
 <div></div>
-{% block style %} {%static 'css/service/service.css'%} {% endblock %}
-<div></div>
-
+{% block style %} {%static 'css/review_infor/review_infor.css'%} {% endblock %}
 {% block content %}
+<section class="review_infor">
+  <div class="container">
+    <div class="row_infor">
+      <div class="left"><i class="fa-solid fa-user"></i> <br /></div>
+      <div class="right">
+        <form method="POST" action="">
+          {% csrf_token %}
 
-{% endblock %} {%block script%}
-<script type="module" src="{%static 'js/main.js'%}"></script>
+          <pre><strong>Tên người dùng: </strong><br><input
+            type="text"
+            name="username"
+            placeholder="Tên người dùng"
+            value="{{ user.username }}"
+          /></pre>
+          {% if form.username.errors %}
+          <div style="font-size: 1.6rem; color: red" class="error">
+            {{ form.username.errors }}
+          </div>
+          {% endif %}
+          <pre><strong>Số điện thoại: </strong><br><input type="text" name="phone" placeholder="Số điện thoại" value="{{ user.infor.phone }}"></pre>
+          <pre><strong>Mật khẩu cũ: </strong><br><input type="password" name="old_password" ></pre>
+          <pre><strong>Mật khẩu mới: </strong><br><input type="password" name="new_password"></pre>
+          <pre><strong>Xác nhận mật khẩu mới: </strong><br><input type="password" name="confirm_password"></pre>
+          {% if form.password.errors %}
+          <div style="font-size: 1.6rem; color: red" class="error">
+            {{ form.password.errors }}
+          </div>
+          {% endif %}
+          <button style="margin-left: 70px" type="submit">
+            Cập nhật thông tin
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %} {% block script %}
+<script type="module" src="{% static 'js/main.js' %}"></script>
 {% endblock %}

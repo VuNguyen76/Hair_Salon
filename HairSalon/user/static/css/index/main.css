@@ -52,23 +52,6 @@
   width: 100%;
 }
 
-.combo {
-  height: 400px;
-  margin-top: 100px;
-}
-.combo .row_combo {
-  display: flex;
-  justify-content: space-between;
-}
-.combo .row_combo .combo-item:hover {
-  width: 350px;
-  height: 400px;
-  transition: 0.2s ease-in-out;
-}
-.combo .row_combo .combo-item:hover img {
-  width: 100%;
-}
-
 .album {
   margin-top: 50px;
 }

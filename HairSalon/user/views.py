@@ -5,6 +5,8 @@ from .forms import RegisterForm,LoginForm
 from .models import Infor,Feedback
 from booking.models import Booking, Service
 from django.contrib.auth.models import User
+from .forms import UserInfoChangeForm
+from django.contrib.auth import authenticate,update_session_auth_hash
 
 def main(request):
     if request.method == "POST":
@@ -113,9 +115,43 @@ def cancel_booking_view(request, booking_id):
     return redirect('quan_ly_dat_lich')
 
 def review_infor(request):
-    users = User.objects.all()
-    return render(request, 'review_infor.html', {'users': users})
+    user = request.user
+    return render(request, 'review_infor.html', {'user': user})
 
 def update_infor(request):
-    return render(request, 'update_infor.html')
+    user = request.user
+    if request.method == 'POST':
+        form = UserInfoChangeForm(request.POST, initial={'username': user.username})
+        
+        if form.is_valid():
+            # Lấy giá trị form và cập nhật thông tin người dùng
+            username = form.cleaned_data.get('username')
+            phone = form.cleaned_data.get('phone')
+            old_password = form.cleaned_data.get('old_password')
+            new_password = form.cleaned_data.get('new_password')
 
+            # Nếu có thay đổi mật khẩu, kiểm tra mật khẩu cũ
+            if new_password:
+                if not old_password:
+                    form.add_error('old_password', "Bạn phải nhập mật khẩu cũ để thay đổi mật khẩu.")
+                elif not user.check_password(old_password):
+                    form.add_error('old_password', "Mật khẩu cũ không đúng.")
+                else:
+                    user.set_password(new_password)
+                    update_session_auth_hash(request, user)  # Giữ cho người dùng vẫn đăng nhập sau khi thay đổi mật khẩu
+
+            # Cập nhật tên và số điện thoại nếu có thay đổi
+            if username:
+                user.username = username
+            if phone:
+                user.infor.phone = phone  # Giả sử bạn lưu số điện thoại trong `Userinfor`
+
+            user.save()
+            user.infor.save()  # Lưu thông tin của người dùng
+            messages.success(request, "Cập nhật thông tin thành công!")
+            return redirect('review_infor')  # Chuyển hướng tới trang thông tin cá nhân
+
+    else:
+        form = UserInfoChangeForm(initial={'username': user.username, 'phone': user.infor.phone})
+
+    return render(request, 'update_infor.html', {'form': form})

@@ -49,17 +49,9 @@
               <li>
                 <a href="/">LIEN HE</a>
               </li>
-              <li>
-                <a href="/">BANG GIA</a>
-              </li>
             </ul>
           </nav>
-          {% if user.is_authenticated %}
-          <div class="point">
-            <i class="fa-solid fa-star"></i>
-            {{user.infor.reward_points|floatformat:0|intcomma}}
-          </div>
-          {% endif %}
+
           <div class="action">
             <button class="btn_booking">
               <a style="color: black" href="/booking/">ĐẶT LỊCH NGAY</a>
