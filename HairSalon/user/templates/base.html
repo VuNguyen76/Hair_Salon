@@ -193,5 +193,10 @@
     <script>
       document.body.style.zoom = "100%";
     </script>
+  {% if messages %}
+    <script type="text/javascript">
+        alert("{% for message in messages %}{{ message }}{% endfor %}");
+    </script>
+{% endif %}
   </body>
 </html>
