@@ -1,59 +1,59 @@
-{% extends "base.html" %}
-{% load static %}
-{% load humanize %}
+{% extends "base.html" %} {% load static %} {% load humanize %} {% block style
+%} {% static 'css/quan-ly-dat-lich/quan-ly-dat-lich.css' %} {% endblock %} {%
+block content %}
+<section>
+  <div class="quan-ly-dat-lich">
+    <div class="container">
+      <h2>Lịch Đặt Của Bạn</h2>
+      <table>
+        <tr>
+          <th>Họ và Tên</th>
+          <th>Số điện thoại</th>
+          <th>Chi nhánh</th>
+          <th>Dịch vụ</th>
+          <th>Lời nhắn</th>
+          <th>Ngày đặt lịch</th>
+          <th>Giờ đặt lịch</th>
+          <th>Tổng chi phí</th>
+          <th>Hành động</th>
+          <!-- Thêm cột hành động -->
+        </tr>
+        {% for booking in bookings %}
+        <tr>
+          <td>{{ booking.full_name }}</td>
+          <td>{{ booking.phone_number }}</td>
+          <td>{{ booking.branch }}</td>
+          <td>{{ booking.services.all|join:", " }}</td>
+          <td>{{ booking.message }}</td>
+          <td>{{ booking.booking_date }}</td>
+          <td>{{ booking.booking_time }}</td>
+          <td>{{ booking.total_price|floatformat:0|intcomma }}</td>
 
-{% block style %}
-  {% static 'css/quan-ly-dat-lich/quan-ly-dat-lich.css' %}
-{% endblock %}
+          <!-- Thêm nút hủy nếu booking chưa bị hủy -->
+          <td>
+            {% if booking.status != 'canceled' %}
+            <a
+              href="{% url 'cancel_booking' booking.id %}"
+              class="btn btn-danger"
+              >Hủy</a
+            >
 
-{% block content %}
-    <section>
-    <div class="quan-ly-dat-lich">
-        <div class="container">
-            <h2>Lịch Đặt Của Bạn</h2>
-            <table>
-              <tr>
-                <th>Họ và Tên</th>
-                <th>Số điện thoại</th>
-                <th>Chi nhánh</th>
-                <th>Dịch vụ</th>
-                <th>Lời nhắn</th>
-                <th>Ngày đặt lịch</th>
-                <th>Giờ đặt lịch</th>
-                <th>Tổng chi phí</th>
-                <th>Hành động</th> <!-- Thêm cột hành động -->
-              </tr>
-              {% for booking in bookings %}
-              <tr>
-                <td>{{ booking.full_name }}</td>
-                <td>{{ booking.phone_number }}</td>
-                <td>{{ booking.branch }}</td>
-                <td>{{ booking.services.all|join:", " }}</td>
-                <td>{{ booking.message }}</td>
-                <td>{{ booking.booking_date }}</td>
-                <td>{{ booking.booking_time }}</td>
-                <td>{{ booking.total_price|floatformat:0|intcomma }}</td>
-
-                <!-- Thêm nút hủy nếu booking chưa bị hủy -->
-                <td>
-                  {% if booking.status != 'canceled' %}
-                    <a href="{% url 'cancel_booking' booking.id %}" class="btn btn-danger">Hủy</a>
-                  {% else %}
-                    <span>Đã hủy</span>
-                  {% endif %}
-                </td>
-              </tr>
-              {% empty %}
-              <tr>
-                <td style="text-align:center;" colspan="9">Bạn chưa có lịch đặt nào.</td>
-              </tr>
-              {% endfor %}
-            </table>
-        </div>
+            {% else %}
+            <span>Đã hủy</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td style="text-align: center" colspan="9">
+            Bạn chưa có lịch đặt nào.
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
     </div>
-  </section>
-{% endblock %}
-
-{% block script %}
-    <script type="module" src="{% static 'js/main.js' %}"></script>
+  </div>
+</section>
+{% endblock %} {% block script %}
+<script type="module" src="{% static 'js/main.js' %}"></script>
 {% endblock %}

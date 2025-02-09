@@ -90,7 +90,7 @@ def manage_employee(request):
 
     # Thống kê số lượng nhân viên theo từng trạng thái
     total_employees = employees_list.count()
-    on_leave = employees_list.filter(status='leave').count()
+    on_leave = employees_list.filter(status='on_leave').count()
     working = employees_list.filter(status='working').count()
     off = employees_list.filter(status='off').count()
     return render(request, 'manage_employee.html', {
