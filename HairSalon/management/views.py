@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Employee, Message
 from user.models import Feedback
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 @login_required(login_url='/login/')
 def manage_dashboard(request):
@@ -120,27 +121,23 @@ def delete_employee(request, pk):
     return redirect('manage_employee')  # Chuyển về danh sách nhân viên
 
 def manage_report(request):
-    # Xác định người dùng hiện tại (quản lý hoặc nhân viên)
     user = request.user
+    messages = Message.objects.filter(Q(sender=user) | Q(receiver=user)).order_by('timestamp')
 
-    # Lấy tất cả tin nhắn giữa nhân viên và quản lý
-    messages = Message.objects.filter(
-        receiver=user
-    ) | Message.objects.filter(
-        sender=user
-    ).order_by('timestamp')
-
-    # Gửi tin nhắn khi có yêu cầu POST
     if request.method == 'POST':
         content = request.POST.get('message')
         if content:
-            receiver = User.objects.exclude(id=user.id).filter(is_staff=not user.is_staff).first()
-            if receiver:
-                Message.objects.create(sender=user, receiver=receiver, content=content)
+            # Gửi cho tất cả nhân viên (không bao gồm admin)
+            staff_users = User.objects.filter(is_staff=True, is_superuser=False)
+            for staff in staff_users:
+                Message.objects.create(
+                    sender=user,
+                    receiver=staff,
+                    content=content
+                )
             return redirect('manage_report')
 
     return render(request, 'manage_report.html', {'messages': messages})
-
 def manage_feedback(request):
     # Chuyển hướng về trang chủ hoặc trang khác    
     feedback_list = Feedback.objects.all().order_by('-created_at')

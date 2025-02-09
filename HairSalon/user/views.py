@@ -109,10 +109,6 @@ def cancel_booking_view(request, booking_id):
         booking.status = 'canceled'  # Cập nhật trạng thái thành 'canceled'
         booking.save()
 
-        messages.success(request, f"Lịch hẹn của {booking.full_name} đã được hủy thành công.")
-    else:
-        messages.error(request, "Bạn không có quyền hủy lịch hẹn này.")
-
     # Sau khi hủy, chuyển hướng về trang chi tiết lịch hẹn
     return redirect('quan_ly_dat_lich')
 

@@ -1,29 +1,30 @@
 {% extends 'base_staff.html' %} {% block content %}
 <h2>Hệ Thống Trao Đổi</h2>
-
-<!-- Khu vực hiển thị tin nhắn -->
-<div class="chat-container" id="chatContainer">
-    {% for message in messages %}
-    <div class="message {% if message.sender == user %}sent{% else %}received{% endif %}">
-      <p><strong>{{ message.sender.username }}:</strong> {{ message.content }}</p>
-      <small>{{ message.timestamp }}</small>
-    </div>
-    {% endfor %}
+<div class="chat-container">
+  {% for message in messages %}
+  <div
+    class="message {% if message.sender == user %}sent{% else %}received%}{% endif %}"
+  >
+    <p><strong>{{ message.sender.username }}:</strong> {{ message.content }}</p>
+    <small>{{ message.timestamp }}</small>
   </div>
+  {% empty %}
+  <p>Không có tin nhắn</p>
+  {% endfor %}
+</div>
 
-<!-- Form gửi tin nhắn -->
 <form method="POST" class="chat-form">
   {% csrf_token %}
-  <input name="message"  placeholder="Nhập báo cáo..."></input>
+  <input name="message" placeholder="Nhập báo cáo..." />
   <button type="submit">Gửi</button>
 </form>
 
 <style>
   .chat-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     max-height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 10px;
     border: 1px solid #ccc;
     background: #f9f9f9;

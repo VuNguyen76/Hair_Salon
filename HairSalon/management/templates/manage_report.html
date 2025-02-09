@@ -4,17 +4,20 @@
 <!-- Khu vực hiển thị tin nhắn -->
 <div class="chat-container" id="chatContainer">
     {% for message in messages %}
-    <div class="message {% if message.sender == user %}sent{% else %}received{% endif %}">
-      <p><strong>{{ message.sender.username }}:</strong> {{ message.content }}</p>
-      <small>{{ message.timestamp }}</small>
-    </div>
+        <div class="message {% if message.sender == user %}sent{% else %}received{% endif %}">
+            <p><strong>{{ message.sender.username }}:</strong> {{ message.content }}</p>
+            <small>{{ message.timestamp }}</small>
+        </div>
+    {% empty %}
+        <p>Không có tin nhắn</p>
     {% endfor %}
+
   </div>
 
 <!-- Form gửi tin nhắn -->
 <form method="POST" class="chat-form">
   {% csrf_token %}
-  <input name="message" placeholder="Nhập báo cáo..."></input>
+  <input name="message" placeholder="Nhập báo cáo...">
   <button type="submit">Gửi</button>
 </form>
 
