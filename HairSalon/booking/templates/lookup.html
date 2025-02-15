@@ -30,7 +30,7 @@
         <td>{{ booking.full_name }}</td>
         <td>{{ booking.phone_number }}</td>
         <td>{{ booking.branch }}</td>
-        <td>{{ booking.service|join:", " }}</td>
+        <td>{{ booking.services.all|join:", " }}</td>
         <td>{{ booking.message }}</td>
         <td>{{ booking.booking_date }}</td>
         <td>{{ booking.booking_time }}</td>
